@@ -1,0 +1,1473 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Sổ tay 750 prompt AI cho lãnh đạo, cán bộ, công chức Đảng ủy, chính quyền, Mặt trận và đoàn thể cấp xã. Biên soạn: TS. Hoàng Thanh Nghị.">
+<meta name="author" content="TS. Hoàng Thanh Nghị">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Sổ tay 750 Prompt Cấp xã</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500&family=Literata:opsz,wght@7..72,600;7..72,700&display=swap">
+<style>
+/* Bố cục ứng dụng: thanh trên mực đậm; thanh bên (hồ sơ + lĩnh vực) và vùng nội dung; khung soạn prompt trượt từ phải. Màu khối: Đảng đỏ son, Chính quyền xanh lam, Mặt trận nâu đất, Dùng chung xanh rêu */
+:root{
+  --paper:#F1F3F0; --surface:#FFFFFF; --sunk:#F6F7F4; --ink:#15223A; --muted:#5A6373; --line:#D8DDD7; --line-strong:#B9C0B8;
+  --bar:#15223A; --bar-fg:#F1F3F0; --bar-muted:#A8B3C2; --bar-field:#22314C;
+  --seal:#A3261C; --seal-hover:#8B1F17; --on-seal:#FFFFFF; --seal-soft:#F6E4E1;
+  --dang:#A3261C; --dang-soft:#F6E4E1; --cq:#1F4F8A; --cq-soft:#E3EBF5; --mt:#85570F; --mt-soft:#F3EADB; --chung:#3D5A4C; --chung-soft:#E2ECE6;
+  --ok:#2E6B4A; --ok-soft:#E0EFE6; --warn:#8A5A00; --warn-soft:#FBEFD4;
+  --mark-bg:#FFEDB8; --mark-fg:#5E4100; --sys-fg:#6E7787;
+  --shadow:0 18px 50px -20px rgba(16,24,40,.45);
+  --f-display:"Literata",Georgia,"Times New Roman",serif;
+  --f-body:"Be Vietnam Pro","Segoe UI",Roboto,Arial,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0E141C; --surface:#161E29; --sunk:#111821; --ink:#E6E9ED; --muted:#9AA4B2; --line:#283241; --line-strong:#3A4658;
+  --bar:#0A0F15; --bar-fg:#EEF0F2; --bar-muted:#8995A6; --bar-field:#18212D;
+  --seal:#E2766A; --seal-hover:#EC8F84; --on-seal:#1B0E0C; --seal-soft:#3A1F1C;
+  --dang:#E8877C; --dang-soft:#3A1F1D; --cq:#86ADE6; --cq-soft:#1B2A40; --mt:#DDA95E; --mt-soft:#33281A; --chung:#8FC2A6; --chung-soft:#1C2E25;
+  --ok:#86C9A2; --ok-soft:#173025; --warn:#E5BC6A; --warn-soft:#352A14;
+  --mark-bg:#3D3216; --mark-fg:#F2D584; --sys-fg:#8691A1; --shadow:0 18px 50px -20px rgba(0,0,0,.8);
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0E141C; --surface:#161E29; --sunk:#111821; --ink:#E6E9ED; --muted:#9AA4B2; --line:#283241; --line-strong:#3A4658;
+  --bar:#0A0F15; --bar-fg:#EEF0F2; --bar-muted:#8995A6; --bar-field:#18212D;
+  --seal:#E2766A; --seal-hover:#EC8F84; --on-seal:#1B0E0C; --seal-soft:#3A1F1C;
+  --dang:#E8877C; --dang-soft:#3A1F1D; --cq:#86ADE6; --cq-soft:#1B2A40; --mt:#DDA95E; --mt-soft:#33281A; --chung:#8FC2A6; --chung-soft:#1C2E25;
+  --ok:#86C9A2; --ok-soft:#173025; --warn:#E5BC6A; --warn-soft:#352A14;
+  --mark-bg:#3D3216; --mark-fg:#F2D584; --sys-fg:#8691A1; --shadow:0 18px 50px -20px rgba(0,0,0,.8);
+  color-scheme:dark}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{background:var(--paper);color:var(--ink);font:15px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--seal);outline-offset:2px}
+mark{background:var(--mark-bg);color:var(--mark-fg);border-radius:3px;padding:0 2px}
+.sys{color:var(--sys-fg);font-style:italic}
+svg.i{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Thanh ứng dụng */
+.appbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bar);color:var(--bar-fg);border-bottom:3px solid var(--seal)}
+.appbar .in{max-width:1320px;margin:0 auto;display:flex;align-items:center;gap:14px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;color:inherit;text-align:left;min-width:0}
+.logo{width:40px;height:40px;border-radius:8px;background:var(--seal);color:var(--on-seal);display:grid;place-items:center;font:700 14px/1 var(--f-display);flex:none}
+.brand b{display:block;font-family:var(--f-display);font-size:17px;line-height:1.15;white-space:nowrap}
+.brand small{display:block;font-size:12px;color:var(--bar-muted);white-space:nowrap}
+.search{flex:1;max-width:560px;margin:0 auto;position:relative}
+.search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--bar-muted)}
+.search input{width:100%;background:var(--bar-field);border:1px solid transparent;border-radius:8px;padding:10px 12px 10px 40px;color:var(--bar-fg)}
+.search input::placeholder{color:var(--bar-muted)}
+.search input:focus{outline:none;border-color:var(--seal)}
+.kbd{position:absolute;right:10px;top:50%;transform:translateY(-50%);font:500 11px var(--f-mono);color:var(--bar-muted);border:1px solid var(--bar-muted);border-radius:4px;padding:1px 6px}
+.barbtn{display:flex;align-items:center;gap:8px;background:transparent;border:1px solid rgba(255,255,255,.22);color:var(--bar-fg);border-radius:8px;padding:8px 12px;white-space:nowrap;font-size:14px}
+.barbtn:hover{border-color:var(--bar-fg)}
+.barbtn .n{background:var(--seal);color:var(--on-seal);border-radius:10px;padding:0 7px;font-size:12px;font-weight:600}
+.only-m{display:none}
+
+/* Khung chính */
+.shell{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:290px minmax(0,1fr);gap:24px;padding-block:20px 40px}
+.side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);align-self:start;max-height:calc(100vh - 96px);overflow:auto;display:grid;gap:14px;padding-bottom:6px}
+.pcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px}
+.pcard .lab{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.pcard .unit{font-weight:600;margin:4px 0 2px;line-height:1.35}
+.pcard .pos{font-size:13.5px;color:var(--muted);line-height:1.4}
+.pcard .act{margin-top:10px;display:flex;gap:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:8px;padding:9px 14px;font-weight:600;font-size:14px;border:1px solid var(--line-strong);background:var(--surface)}
+.btn:hover{border-color:var(--ink)}
+.btn.pri{background:var(--seal);border-color:var(--seal);color:var(--on-seal)}
+.btn.pri:hover{background:var(--seal-hover);border-color:var(--seal-hover)}
+.btn.sm{padding:6px 10px;font-size:13px}
+.btn.block{width:100%}
+.nav{display:grid;gap:2px}
+.navh{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:10px 10px 4px;display:flex;align-items:center;gap:8px}
+.navi{display:flex;align-items:center;gap:10px;width:100%;background:none;border:0;border-radius:8px;padding:8px 10px;text-align:left;font-size:14px;line-height:1.3}
+.navi:hover{background:var(--surface)}
+.navi[aria-current="true"]{background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);font-weight:600}
+.navi .c{margin-left:auto;font:500 11.5px var(--f-mono);color:var(--muted)}
+.sw{width:10px;height:10px;border-radius:3px;flex:none}
+.sw.g-dang{background:var(--dang)} .sw.g-cq{background:var(--cq)} .sw.g-mt{background:var(--mt)} .sw.g-chung{background:var(--chung)}
+.side details summary{list-style:none;cursor:pointer}
+.side details summary::-webkit-details-marker{display:none}
+.side details[open] .chev{transform:rotate(90deg)}
+.chev{transition:transform .15s}
+
+/* Nội dung */
+.main{min-width:0}
+.crumbs{font-size:13px;color:var(--muted);display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.crumbs button{background:none;border:0;padding:0;color:var(--seal);text-decoration:underline;text-underline-offset:3px}
+.phead{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:end;justify-content:space-between;margin:6px 0 16px}
+.phead h1{font-size:clamp(24px,3vw,32px);line-height:1.15}
+.phead p{margin:6px 0 0;color:var(--muted);max-width:70ch}
+.welcome{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:22px;margin-bottom:22px}
+.welcome h1{font-size:clamp(24px,3vw,32px);line-height:1.15}
+.welcome .by{margin:8px 0 0;color:var(--muted);font-size:14px}
+.welcome .by b{color:var(--ink)}
+.welcome p.lead{margin:12px 0 16px;max-width:62ch}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:12px;align-content:start}
+.steps li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;font-size:14px}
+.steps .n{width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font:600 12px var(--f-mono)}
+.sect{margin:6px 0 10px;display:flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--muted)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-bottom:22px}
+.tile{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;text-align:left;min-height:74px}
+.tile:hover{border-color:var(--line-strong);box-shadow:0 6px 18px -12px rgba(0,0,0,.35)}
+.tile .ic{width:38px;height:38px;border-radius:8px;display:grid;place-items:center;font:600 12px var(--f-mono)}
+.ic.g-dang{background:var(--dang-soft);color:var(--dang)} .ic.g-cq{background:var(--cq-soft);color:var(--cq)} .ic.g-mt{background:var(--mt-soft);color:var(--mt)} .ic.g-chung{background:var(--chung-soft);color:var(--chung)}
+.tile b{font-weight:600;font-size:14.5px;line-height:1.3}
+.tile .c{font:500 12px var(--f-mono);color:var(--muted)}
+.list{display:grid;gap:8px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:stretch;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.row:hover{border-color:var(--line-strong)}
+.row .open{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;background:none;border:0;padding:12px 14px;text-align:left;border-radius:10px 0 0 10px;min-width:0}
+.row .code{font:500 12px var(--f-mono);color:var(--muted);display:flex;align-items:center;gap:7px;white-space:nowrap}
+.row .t{font-weight:600;font-size:15px;line-height:1.35;display:block}
+.row .d{display:block;color:var(--muted);font-size:13.5px;line-height:1.45;margin-top:2px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.row .go{color:var(--seal);font-size:13px;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:4px}
+.row .star{border:0;border-left:1px solid var(--line);background:none;padding:0 14px;color:var(--muted);border-radius:0 10px 10px 0}
+.row .star[aria-pressed="true"]{color:var(--seal)}
+.row .star[aria-pressed="true"] svg{fill:currentColor}
+.tag{font-size:11.5px;border-radius:4px;padding:1px 7px;font-weight:600;white-space:nowrap}
+.tag.out{background:var(--sunk);color:var(--muted);border:1px solid var(--line)}
+.more{display:flex;justify-content:center;margin:14px 0}
+.empty{background:var(--surface);border:1px dashed var(--line-strong);border-radius:10px;padding:22px;color:var(--muted)}
+.basis{margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 18px;font-size:14px}
+.basis summary{cursor:pointer;font-weight:600}
+.basis ol{margin:12px 0 6px;padding-left:20px;display:grid;gap:8px;max-width:95ch}
+.basis p{color:var(--muted);font-size:13.5px;margin:6px 0 0;max-width:95ch}
+.foot{margin-top:18px;color:var(--muted);font-size:13px}
+
+/* Lớp phủ, khung soạn, hộp thoại */
+.scrim{position:fixed;inset:0;background:rgba(10,15,25,.5);z-index:40}
+.composer{position:fixed;top:0;right:0;bottom:0;width:min(680px,100%);z-index:50;background:var(--paper);box-shadow:var(--shadow);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
+.chead{background:var(--surface);border-bottom:1px solid var(--line);padding-block:14px 12px;padding-right:max(16px,env(safe-area-inset-right,0px));padding-left:20px}
+.chead .top{display:flex;align-items:center;gap:10px}
+.chead .code{font:500 12.5px var(--f-mono);color:var(--muted)}
+.chip{font-size:12px;border-radius:4px;padding:2px 8px;font-weight:600}
+.chip.g-dang{background:var(--dang-soft);color:var(--dang)} .chip.g-cq{background:var(--cq-soft);color:var(--cq)} .chip.g-mt{background:var(--mt-soft);color:var(--mt)} .chip.g-chung{background:var(--chung-soft);color:var(--chung)}
+.x{margin-left:auto;background:none;border:1px solid var(--line);border-radius:8px;width:38px;height:38px;display:grid;place-items:center}
+.chead h2{font-size:22px;line-height:1.25;margin-top:8px}
+.chead p{margin:6px 0 0;color:var(--muted);font-size:14px}
+.cbody{flex:1;overflow:auto;padding-block:16px 24px;padding-left:20px;padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:16px;align-content:start}
+.blk{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.blk h3{font-family:var(--f-body);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.blk h3 .step{width:22px;height:22px;border-radius:6px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font:600 11px var(--f-mono);letter-spacing:0}
+.fld{display:grid;gap:6px;padding:10px 0;border-top:1px dashed var(--line)}
+.fld:first-of-type{border-top:0;padding-top:0}
+.fld label{font-size:14px;font-weight:600;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.auto{font-size:11px;font-weight:600;background:var(--ok-soft);color:var(--ok);border-radius:4px;padding:1px 6px}
+.input,.textarea,select.input{width:100%;background:var(--sunk);border:1px solid var(--line);border-radius:8px;padding:9px 11px}
+.input:focus,.textarea:focus{outline:none;border-color:var(--seal);background:var(--surface)}
+.input.filled{background:var(--surface)}
+.textarea{min-height:120px;resize:vertical;font:13.5px/1.55 var(--f-body)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:3px 10px;font-size:12.5px}
+.chips button:hover{border-color:var(--seal);color:var(--seal)}
+.note{font-size:12.5px;color:var(--muted);margin:6px 0 0}
+.nofld{color:var(--muted);font-size:14px;margin:0}
+.preview{white-space:pre-wrap;word-wrap:break-word;background:var(--sunk);border:1px solid var(--line);border-radius:8px;padding:12px;margin:0;font:13px/1.6 var(--f-body);max-height:360px;overflow:auto}
+.cfoot{background:var(--surface);border-top:1px solid var(--line);padding-block:12px calc(12px + env(safe-area-inset-bottom,0px));padding-left:20px;padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:10px}
+.cfoot .r1{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pill{font-size:12.5px;font-weight:600;border-radius:999px;padding:4px 10px}
+.pill.w{background:var(--warn-soft);color:var(--warn)} .pill.g{background:var(--ok-soft);color:var(--ok)}
+.cfoot .r1 .sp{flex:1}
+.ai{font-size:12.5px;color:var(--muted);display:flex;gap:4px 12px;flex-wrap:wrap;align-items:center}
+.ai a{color:var(--seal);font-weight:600;text-decoration:none}
+.ai a:hover{text-decoration:underline}
+.modal{position:fixed;z-index:60;left:50%;top:50%;transform:translate(-50%,-50%);width:min(720px,calc(100% - 24px));max-height:calc(100% - 24px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;background:var(--paper);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.mhead{background:var(--bar);color:var(--bar-fg);padding:18px 20px;border-bottom:3px solid var(--seal)}
+.mhead h2{font-size:21px}
+.mhead p{margin:6px 0 0;color:var(--bar-muted);font-size:13.5px}
+.mbody{overflow:auto;padding:16px 20px;display:grid;gap:14px}
+.mfoot{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;padding:12px 20px calc(12px + env(safe-area-inset-bottom,0px));background:var(--surface);border-top:1px solid var(--line)}
+.seg{display:inline-flex;background:var(--sunk);border:1px solid var(--line);border-radius:10px;padding:3px;gap:3px;flex-wrap:wrap}
+.seg button{border:0;background:none;border-radius:8px;padding:7px 14px;font-weight:600;font-size:14px;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.posg{display:grid;gap:6px;margin-top:10px}
+.posg .kh{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;display:flex;gap:8px;align-items:center}
+.k-dang{color:var(--dang)} .k-cq{color:var(--cq)} .k-mt{color:var(--mt)}
+.opts{display:flex;flex-wrap:wrap;gap:6px}
+.opt{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:7px 11px;text-align:left;line-height:1.35;font-size:13.5px}
+.opt:hover{border-color:var(--line-strong)}
+.opt[aria-pressed="true"]{color:var(--surface);font-weight:600}
+.opt[aria-pressed="true"].g-dang{background:var(--dang);border-color:var(--dang)}
+.opt[aria-pressed="true"].g-cq{background:var(--cq);border-color:var(--cq)}
+.opt[aria-pressed="true"].g-mt{background:var(--mt);border-color:var(--mt)}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.lbl{display:block;font-size:13.5px;font-weight:600;margin-bottom:6px}
+.lbl small{font-weight:400;color:var(--muted)}
+.unitprev{background:var(--surface);border:1px dashed var(--line-strong);border-radius:8px;padding:10px 12px;font-size:14px}
+.toast{position:fixed;left:50%;top:calc(14px + env(safe-area-inset-top,0px));transform:translateX(-50%);z-index:70;background:var(--ink);color:var(--paper);border-radius:10px;padding:10px 16px;font-size:14px;box-shadow:var(--shadow);max-width:calc(100% - 32px)}
+
+@media (max-width:980px){
+  .shell{grid-template-columns:minmax(0,1fr)}
+  .side{position:fixed;z-index:50;top:0;left:0;bottom:0;width:min(330px,88%);max-height:none;background:var(--paper);padding:calc(14px + env(safe-area-inset-top,0px)) 14px 20px max(14px,env(safe-area-inset-left,0px));box-shadow:var(--shadow);transform:translateX(-105%);transition:transform .2s}
+  .side.open{transform:none}
+  .only-m{display:flex}
+  .welcome{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:680px){
+  .appbar .in{flex-wrap:wrap;gap:10px}
+  .search{order:3;flex-basis:100%;max-width:none}
+  .kbd,.hide-s{display:none}
+  .brand small{display:none}
+  .appbar .acts{margin-left:auto;display:flex;gap:8px}
+  .grid2{grid-template-columns:minmax(0,1fr)}
+  .row .open{grid-template-columns:minmax(0,1fr) auto}
+  .row .code{grid-column:1/-1}
+  .modal{top:auto;bottom:0;left:0;transform:none;width:100%;border-radius:14px 14px 0 0;max-height:calc(100% - 20px - env(safe-area-inset-top,0px))}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+</head>
+<body>
+<header class="appbar">
+  <div class="in gut">
+    <button class="barbtn only-m" id="menuBtn" type="button" aria-label="Mở danh mục lĩnh vực"><svg class="i" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    <button class="brand" id="homeBtn" type="button" aria-label="Về trang chủ">
+      <span class="logo">750</span>
+      <span><b>Sổ tay Prompt AI</b><small>Công vụ cấp xã · TS. Hoàng Thanh Nghị</small></span>
+    </button>
+    <div class="search">
+      <svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Tìm việc cần làm: công văn, khiếu nại, hộ tịch, đảng viên..." autocomplete="off" aria-label="Tìm prompt">
+      <span class="kbd">/</span>
+    </div>
+    <div class="acts" style="display:flex;gap:8px">
+      <button class="barbtn" id="savedBtn" type="button"><svg class="i" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg><span class="hide-s">Đã lưu</span><span class="n" id="savedN">0</span></button>
+      <button class="barbtn" id="profileBtn" type="button"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span class="hide-s">Hồ sơ đơn vị</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="shell gut">
+  <aside class="side" id="side" aria-label="Danh mục"></aside>
+  <main class="main" id="main"></main>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<section class="composer" id="composer" role="dialog" aria-modal="true" aria-labelledby="cTitle" hidden></section>
+<section class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" hidden></section>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+var D=[];
+// Nhóm CHUNG (dùng cho mọi vị trí) và khối ĐẢNG
+D.push(["VB","Văn bản hành chính","chung",`
+Soạn công văn|Soạn công văn gửi [nơi nhận] về việc [nội dung], đủ số, ký hiệu, trích yếu, nơi nhận, chức vụ người ký.
+Soạn tờ trình|Soạn tờ trình đề nghị [cấp có thẩm quyền] phê duyệt [nội dung]: sự cần thiết, căn cứ, nội dung đề nghị, kinh phí, kiến nghị.
+Soạn kế hoạch triển khai|Soạn kế hoạch thực hiện [văn bản cấp trên/nhiệm vụ]: mục đích, yêu cầu, nội dung, bảng phân công, tiến độ, kinh phí.
+Soạn thông báo|Soạn thông báo về [nội dung] gửi [đối tượng], nêu rõ thời gian, địa điểm, thành phần, đầu mối liên hệ.
+Soạn quyết định cá biệt|Soạn quyết định về [nội dung] gồm căn cứ ban hành, các điều khoản, điều khoản thi hành và nơi nhận.
+Quyết định thành lập ban, tổ|Soạn quyết định thành lập [ban chỉ đạo/tổ công tác] kèm bảng danh sách thành viên và nhiệm vụ từng người.
+Soạn quy chế làm việc|Soạn dự thảo quy chế [làm việc/phối hợp] của [cơ quan] theo chương, điều; bám chức năng, nhiệm vụ đã được giao.
+Soạn giấy mời|Soạn giấy mời dự [hội nghị/cuộc họp]: nội dung, người chủ trì, thành phần, thời gian, địa điểm, tài liệu cần chuẩn bị.
+Soạn biên bản|Chuyển ghi chép thô cuộc [họp/kiểm tra] dưới đây thành biên bản đủ thành phần, diễn biến, kết luận, chữ ký.
+Văn bản chỉ đạo khẩn|Soạn văn bản chỉ đạo khẩn về [tình huống]: ngắn gọn, việc phải làm ngay, người chịu trách nhiệm, thời hạn báo cáo.
+Rà soát thể thức văn bản|Rà soát dự thảo dưới đây: chỉ ra lỗi thể thức, chính tả, viết hoa, viện dẫn; đưa bản đã sửa và bảng lỗi.
+Rút gọn văn bản dài|Rút gọn văn bản [tên] còn [số] trang, giữ nguyên số liệu, mốc thời gian và các nhiệm vụ cụ thể.
+Trích việc từ văn bản cấp trên|Đọc văn bản [số hiệu] và lập bảng việc cấp xã phải làm: nội dung, cơ quan chủ trì, thời hạn, sản phẩm.
+Hướng dẫn thôn, tổ dân phố|Soạn văn bản hướng dẫn trưởng thôn, tổ trưởng tổ dân phố triển khai [nội dung], lời lẽ dễ hiểu, có các bước cụ thể.
+Văn bản đôn đốc|Soạn văn bản đôn đốc [đơn vị] thực hiện [nhiệm vụ] chậm tiến độ: kết quả hiện có, phần còn chậm, hạn mới.
+Trả lời kiến nghị|Soạn văn bản trả lời kiến nghị của [tổ chức/công dân] về [nội dung]: thẩm quyền, kết quả xử lý, hướng dẫn tiếp theo.
+Văn bản xin ý kiến cấp trên|Soạn văn bản xin ý kiến [cơ quan cấp tỉnh] về [vướng mắc]: tình hình, quan điểm của xã và câu hỏi cụ thể cần trả lời.
+Đề nghị phối hợp|Soạn văn bản đề nghị [cơ quan] phối hợp thực hiện [việc]: nội dung phối hợp, thời gian, đầu mối liên hệ.
+Phụ lục bảng biểu|Chuyển số liệu thô dưới đây thành phụ lục bảng theo [mẫu biểu], có dòng tổng cộng và ghi chú nguồn số liệu.
+Biên tập văn phong hành chính|Biên tập đoạn văn dưới đây theo văn phong hành chính: câu ngắn, rõ chủ thể, bỏ từ thừa, không đổi nội dung.
+Văn bản đính chính|Soạn văn bản đính chính sai sót tại [văn bản số...]: nội dung sai, nội dung sửa lại, thời điểm có hiệu lực.
+Thu hồi, bãi bỏ văn bản|Soạn quyết định thu hồi/bãi bỏ [văn bản], nêu lý do, căn cứ và cách xử lý hệ quả phát sinh.
+Danh mục văn bản cần ban hành|Từ chương trình công tác [kỳ], lập danh mục văn bản cần ban hành: tên, loại, bộ phận soạn, thời hạn trình.
+Bộ mẫu văn bản dùng chung|Xây dựng mẫu [loại văn bản] dùng chung cho các bộ phận, kèm hướng dẫn điền từng mục.
+So sánh hai dự thảo|So sánh dự thảo [lần 1] và [lần 2]: bảng các điểm thêm, bớt, sửa và nhận xét điểm cần lưu ý trước khi ký.
+`]);
+D.push(["BC","Báo cáo, tổng hợp, số liệu","chung",`
+Báo cáo tuần|Tổng hợp báo cáo kết quả công tác tuần của [bộ phận]: việc đã làm, việc tồn, kiến nghị, kế hoạch tuần tới.
+Báo cáo tháng|Soạn báo cáo tháng [tháng] của [cơ quan] từ báo cáo các bộ phận: kết quả nổi bật, hạn chế, nhiệm vụ tháng sau.
+Báo cáo quý, 6 tháng|Soạn báo cáo [quý/6 tháng] có bảng so sánh với kế hoạch và cùng kỳ năm trước, nêu nguyên nhân chênh lệch.
+Báo cáo tổng kết năm|Soạn báo cáo tổng kết năm [năm]: kết quả theo từng chỉ tiêu, bài học kinh nghiệm, phương hướng năm sau.
+Báo cáo chuyên đề|Soạn báo cáo chuyên đề về [nội dung] theo đề cương của [cơ quan yêu cầu]; đối chiếu đủ từng mục đề cương.
+Sơ kết, tổng kết văn bản|Soạn báo cáo sơ kết/tổng kết thực hiện [nghị quyết/chỉ thị/chương trình] sau [số năm], có phụ lục số liệu.
+Báo cáo nhanh vụ việc|Soạn báo cáo nhanh vụ việc [mô tả]: diễn biến, thiệt hại, việc đã xử lý, đề xuất; không quá 1 trang.
+Gộp số liệu các thôn|Gộp số liệu của các thôn, tổ dân phố dưới đây vào một bảng, kiểm tra cộng dồn và chỉ ra số liệu bất thường.
+Phát hiện số liệu mâu thuẫn|Rà soát báo cáo dưới đây, chỉ ra số liệu mâu thuẫn giữa các phần và giữa bảng với lời văn.
+Theo dõi bộ chỉ tiêu|Lập bảng theo dõi [bộ chỉ tiêu]: chỉ tiêu, kế hoạch, thực hiện, tỷ lệ, đánh giá đạt/chưa đạt.
+Viết phần hạn chế, nguyên nhân|Từ kết quả dưới đây, viết phần hạn chế và nguyên nhân (chủ quan, khách quan) cụ thể, tránh chung chung.
+Viết phần nhiệm vụ, giải pháp|Viết phần nhiệm vụ, giải pháp kỳ tới gắn với từng hạn chế đã nêu, có đầu mối và thời hạn.
+Báo cáo giải trình|Soạn báo cáo giải trình với [cơ quan] về [việc chậm/chưa đạt]: nguyên nhân, trách nhiệm, biện pháp khắc phục.
+Đề cương thu thập số liệu|Soạn đề cương và mẫu biểu gửi các bộ phận để thu thập số liệu cho báo cáo [tên], thống nhất đơn vị tính.
+Tóm tắt báo cáo cho lãnh đạo|Tóm tắt báo cáo [tên] thành 10 dòng: kết quả chính, 3 điểm nghẽn, việc cần lãnh đạo quyết.
+Phân tích xu hướng số liệu|Phân tích số liệu [chỉ tiêu] qua [số kỳ]: xu hướng tăng giảm, điểm bất thường, giả thuyết nguyên nhân cần kiểm chứng.
+Trình bày số liệu bằng biểu đồ|Đề xuất loại biểu đồ phù hợp cho số liệu dưới đây và viết lời dẫn ngắn cho từng biểu đồ.
+Báo cáo phục vụ đoàn kiểm tra|Chuẩn bị báo cáo phục vụ đoàn [kiểm tra/giám sát] về [nội dung] theo văn bản [số], kèm danh mục hồ sơ.
+Bảng theo dõi nhiệm vụ được giao|Lập bảng theo dõi nhiệm vụ cấp trên giao: nội dung, văn bản giao, hạn, tiến độ, trạng thái quá hạn.
+Chuẩn hóa cách ghi số liệu|Chuẩn hóa cách ghi số, đơn vị tính, tỷ lệ phần trăm trong báo cáo dưới đây cho thống nhất.
+Báo cáo thực hiện kết luận|Báo cáo kết quả thực hiện kết luận [của đoàn kiểm tra/cấp trên]: từng nội dung, đã xong, đang làm, lý do chậm.
+Tổng hợp ý kiến góp ý|Tổng hợp ý kiến góp ý của [các đơn vị] về [dự thảo]: nhóm theo nội dung, ý kiến tiếp thu, nội dung giải trình.
+Lồng số liệu vào lời văn|Viết lại đoạn đánh giá dưới đây có dẫn số liệu cụ thể từ bảng kèm theo, không thêm số ngoài bảng.
+Thẩm định báo cáo trước khi ký|Đóng vai người thẩm định: chấm báo cáo theo đủ ý, đúng số, đúng thể thức, rõ kiến nghị; liệt kê điểm phải sửa.
+Lịch báo cáo định kỳ|Từ các văn bản dưới đây, lập lịch báo cáo định kỳ: tên báo cáo, nơi nhận, kỳ, hạn gửi, bộ phận chủ trì.
+`]);
+D.push(["HN","Hội nghị, cuộc họp, phát biểu","chung",`
+Kịch bản điều hành hội nghị|Soạn kịch bản điều hành hội nghị [tên]: thứ tự nội dung, người thực hiện, thời lượng từng phần.
+Diễn văn khai mạc|Soạn bài khai mạc hội nghị [tên] dài [số] phút: mục đích, ý nghĩa, nội dung trọng tâm đề nghị đại biểu thảo luận.
+Bài phát biểu chỉ đạo|Soạn bài phát biểu chỉ đạo của [chức danh] tại [sự kiện]: ghi nhận kết quả, chỉ ra tồn tại, 3 - 5 nhiệm vụ cụ thể.
+Phát biểu kết luận|Từ ghi chép thảo luận dưới đây, soạn phát biểu kết luận: nội dung thống nhất, giao việc, thời hạn.
+Thông báo kết luận cuộc họp|Soạn thông báo kết luận cuộc họp [tên]: các nội dung đã thống nhất, phân công, thời hạn báo cáo.
+Chương trình hội nghị|Soạn chương trình hội nghị [tên] dạng bảng: thời gian, nội dung, người trình bày, người chủ trì.
+Danh mục chuẩn bị hậu cần|Lập danh mục việc chuẩn bị hội nghị [tên]: hội trường, tài liệu, khánh tiết, âm thanh, đón tiếp, người phụ trách.
+Tham luận|Soạn tham luận của [đơn vị] tại [hội nghị] về [chủ đề]: cách làm, kết quả, bài học, kiến nghị; dài [số] phút.
+Diễn văn lễ kỷ niệm|Soạn diễn văn kỷ niệm [ngày lễ/sự kiện] tại địa phương: ý nghĩa lịch sử, truyền thống địa phương, nhiệm vụ hiện nay.
+Mở đầu, kết thúc buổi đối thoại|Soạn phần mở đầu và kết thúc buổi đối thoại với [đối tượng] về [chủ đề], giọng gần gũi, đúng quy định.
+Câu hỏi gợi ý thảo luận|Soạn 8 - 10 câu hỏi gợi ý thảo luận cho hội nghị [chủ đề], hướng đến giải pháp cụ thể.
+Tóm tắt tài liệu hội nghị|Tóm tắt tài liệu hội nghị dưới đây thành 1 trang để lãnh đạo đọc trước khi chủ trì.
+Gỡ băng thành biên bản|Chuyển nội dung ghi âm đã gõ thành văn bản dưới đây thành biên bản cuộc họp, tách ý kiến từng người phát biểu.
+Chào mừng đoàn công tác|Soạn lời chào mừng đoàn [cơ quan] về làm việc, giới thiệu ngắn tình hình địa phương và nội dung đề nghị.
+Báo cáo đề dẫn tọa đàm|Soạn báo cáo đề dẫn hội thảo/tọa đàm [chủ đề]: thực trạng, vấn đề đặt ra, câu hỏi cần làm rõ.
+Phát biểu tổng kết phong trào|Soạn phát biểu tổng kết phong trào [tên], biểu dương tập thể, cá nhân tiêu biểu theo danh sách kèm theo.
+Lời dẫn chương trình|Soạn lời dẫn chương trình cho [lễ/hội nghị/văn nghệ], ngắn, trang trọng, đúng thứ tự chương trình.
+Phát biểu nhận nhiệm vụ|Soạn bài phát biểu nhận nhiệm vụ [chức danh]: cảm ơn, nhận thức nhiệm vụ, cam kết hành động cụ thể.
+Hội nghị cán bộ, công chức|Soạn phát biểu của thủ trưởng tại hội nghị cán bộ, công chức năm [năm]: đánh giá, yêu cầu kỷ luật, kỷ cương công vụ.
+Giao việc sau cuộc họp|Từ kết luận dưới đây, lập bảng giao việc: nội dung, người chủ trì, người phối hợp, thời hạn, sản phẩm.
+Dự kiến câu hỏi và trả lời|Dự kiến 10 câu hỏi đại biểu hoặc người dân có thể nêu về [chủ đề] và gợi ý trả lời dựa trên tài liệu.
+Bố cục trình chiếu|Đề xuất bố cục [số] trang trình chiếu về [nội dung] tại hội nghị, mỗi trang có tiêu đề và 3 - 4 ý.
+Phát biểu lễ ra quân|Soạn phát biểu phát động ra quân [chiến dịch/đợt cao điểm]: mục tiêu, chỉ tiêu, lời kêu gọi.
+Họp trực tuyến nhiều điểm cầu|Soạn hướng dẫn tổ chức họp trực tuyến với [các điểm cầu]: kiểm tra kỹ thuật, điều hành, phương án dự phòng.
+Rút kinh nghiệm tổ chức hội nghị|Từ phản ánh sau hội nghị [tên], soạn nội dung rút kinh nghiệm: việc làm tốt, việc cần sửa lần sau.
+`]);
+D.push(["CS","Chuyển đổi số, dùng AI an toàn","chung",`
+Ẩn danh dữ liệu trước khi dùng AI|Hướng dẫn tôi thay họ tên, số định danh, địa chỉ trong tài liệu dưới đây bằng mã, giữ nguyên nội dung nghiệp vụ.
+Phản biện kết quả AI|Đóng vai người phản biện: rà kết quả AI dưới đây, chỉ ra chỗ có thể sai, chỗ phải đối chiếu văn bản gốc.
+Kế hoạch chuyển đổi số|Soạn kế hoạch chuyển đổi số năm [năm]: chính quyền số, kinh tế số, xã hội số, chỉ tiêu, phân công.
+Hướng dẫn dịch vụ công trực tuyến|Soạn hướng dẫn từng bước cho người dân nộp hồ sơ [thủ tục] trên Cổng dịch vụ công, lời lẽ dễ hiểu.
+Tổ công nghệ số cộng đồng|Soạn kế hoạch hoạt động của tổ công nghệ số cộng đồng ở thôn: nhiệm vụ, lịch hỗ trợ, cách báo cáo.
+Quy trình văn bản điện tử|Soạn quy trình nội bộ xử lý văn bản đến, đi trên hệ thống quản lý văn bản điện tử, nêu trách nhiệm từng khâu.
+Cảnh báo lừa đảo trực tuyến|Soạn bài tuyên truyền ngắn giúp người dân nhận biết [hình thức lừa đảo] và cách xử lý khi gặp.
+Câu lệnh AI mẫu cho bộ phận|Viết 5 câu lệnh AI mẫu cho việc thường xuyên của [bộ phận], kèm loại dữ liệu không được đưa vào.
+Thiết kế bảng tính theo dõi|Thiết kế cấu trúc bảng tính theo dõi [nội dung]: các cột, kiểu dữ liệu, công thức tổng hợp, danh sách chọn.
+Viết công thức bảng tính|Viết công thức Excel/Google Sheets để [yêu cầu tính toán] trên bảng có các cột [tên cột], giải thích từng phần.
+Biểu mẫu thu thập trực tuyến|Thiết kế biểu mẫu trực tuyến thu thập [thông tin] từ [đối tượng]: câu hỏi, kiểu trả lời, câu bắt buộc.
+Chuẩn hóa danh sách|Chuẩn hóa danh sách dưới đây: viết hoa họ tên, định dạng ngày, tách cột, đánh dấu dòng trùng.
+Tin đăng trang thông tin điện tử|Soạn tin đăng trang thông tin điện tử về [sự kiện]: tít, sapo, nội dung, chú thích ảnh.
+Kịch bản video ngắn|Soạn kịch bản video 60 giây tuyên truyền [nội dung]: cảnh quay, lời thoại, chữ trên màn hình.
+Đánh giá tỷ lệ số hóa hồ sơ|Lập bảng đánh giá tỷ lệ số hóa hồ sơ thủ tục theo lĩnh vực từ số liệu kèm theo, chỉ ra lĩnh vực đạt thấp.
+Quy định an toàn thông tin nội bộ|Soạn quy định ngắn về an toàn thông tin cho cán bộ: mật khẩu, thiết bị, thư điện tử, mạng xã hội, sao lưu.
+Xử lý sự cố dữ liệu|Soạn quy trình xử lý khi [máy tính hỏng/mất dữ liệu/nhiễm mã độc]: báo ai, làm gì trước, không được làm gì.
+Chương trình tập huấn kỹ năng số|Soạn chương trình tập huấn kỹ năng số [thời lượng] cho [đối tượng]: nội dung, thực hành, cách đánh giá.
+Hỏi - đáp thường gặp|Soạn bộ hỏi - đáp thường gặp về [dịch vụ/ứng dụng] cho người dân, mỗi câu trả lời không quá 3 câu.
+Tóm tắt điểm mới văn bản|Tóm tắt văn bản dưới đây thành: điểm mới, đối tượng áp dụng, việc cấp xã phải làm, thời điểm hiệu lực.
+Quy chế nhóm nhắn tin điều hành|Soạn quy chế sử dụng nhóm Zalo/nền tảng nhắn tin điều hành của [cơ quan]: nội dung được gửi, giờ gửi, bảo mật.
+Báo cáo kết quả chuyển đổi số|Tổng hợp báo cáo kết quả chuyển đổi số [kỳ] theo các chỉ số tại [văn bản yêu cầu], có bảng số liệu.
+Làm sạch dữ liệu chuyên ngành|Lập kế hoạch làm sạch dữ liệu [lĩnh vực]: phạm vi, cách đối soát, người thực hiện, tiến độ.
+Viết lại cho người dân vùng cao|Viết lại thông báo dưới đây bằng ngôn ngữ phổ thông cho người dân vùng cao: câu ngắn, ví dụ gần gũi.
+Bản tóm tắt để chuyển ngữ|Soạn bản tóm tắt [nội dung] bằng tiếng Việt đơn giản để người thạo tiếng [dân tộc] chuyển ngữ khi tuyên truyền.
+`]);
+D.push(["DU","Lãnh đạo, chỉ đạo của Đảng ủy","dang",`
+Dự thảo nghị quyết chuyên đề|Soạn dự thảo nghị quyết của Đảng ủy về [chuyên đề]: đánh giá tình hình, quan điểm, mục tiêu, chỉ tiêu, giải pháp.
+Chương trình hành động|Soạn chương trình hành động thực hiện [nghị quyết cấp trên], cụ thể hóa thành nhiệm vụ, chỉ tiêu, phân công.
+Chương trình công tác toàn khóa|Soạn chương trình công tác toàn khóa của Đảng ủy nhiệm kỳ [nhiệm kỳ] theo nghị quyết đại hội.
+Chương trình công tác năm|Soạn chương trình công tác năm [năm] của Ban Chấp hành, Ban Thường vụ: nội dung theo tháng, cơ quan chuẩn bị.
+Kết luận của Ban Thường vụ|Từ ghi chép phiên họp, soạn kết luận của Ban Thường vụ về [nội dung]: ý kiến thống nhất, giao nhiệm vụ.
+Chỉ thị của Ban Thường vụ|Soạn dự thảo chỉ thị của Ban Thường vụ Đảng ủy về [nội dung]: tình hình, yêu cầu, nhiệm vụ của các tổ chức.
+Đề cương báo cáo chính trị đại hội|Lập đề cương báo cáo chính trị đại hội Đảng bộ: đánh giá nhiệm kỳ, mục tiêu, khâu đột phá, giải pháp.
+Kiểm điểm Ban Chấp hành|Soạn dự thảo báo cáo kiểm điểm của Ban Chấp hành [năm/nhiệm kỳ]: ưu điểm, hạn chế, nguyên nhân, trách nhiệm.
+Đề cương đề án của Đảng ủy|Lập đề cương đề án [tên] trình Ban Chấp hành: sự cần thiết, thực trạng, mục tiêu, giải pháp, nguồn lực, lộ trình.
+Phân công cấp ủy viên|Soạn quyết định phân công nhiệm vụ Ủy viên Ban Chấp hành phụ trách lĩnh vực, địa bàn theo danh sách kèm theo.
+Rà soát quy chế làm việc|Rà soát dự thảo quy chế làm việc của Ban Chấp hành Đảng bộ theo quy chế mẫu của cấp trên, chỉ ra điểm cần bổ sung.
+Ý kiến về kế hoạch kinh tế - xã hội|Soạn nội dung Đảng ủy cho ý kiến về kế hoạch phát triển kinh tế - xã hội năm [năm] do UBND trình.
+Lãnh đạo xử lý điểm nóng|Soạn phương án lãnh đạo xử lý vụ việc [mô tả]: phân công cấp ủy viên, lực lượng, tuyên truyền, mốc báo cáo.
+Tổng hợp ý kiến chi bộ|Tổng hợp ý kiến các chi bộ về [dự thảo] dưới đây, nhóm theo nội dung và đề xuất tiếp thu.
+Làm việc với chi bộ|Chuẩn bị nội dung buổi Thường trực Đảng ủy làm việc với chi bộ [tên]: tình hình, câu hỏi, gợi ý kết luận.
+Định hướng sinh hoạt chuyên đề|Soạn đề cương gợi ý sinh hoạt chuyên đề chi bộ quý [quý] về [chủ đề] gửi các chi bộ.
+Tiến độ chỉ tiêu nghị quyết đại hội|Lập bảng đánh giá tiến độ chỉ tiêu nghị quyết đại hội đến [thời điểm]: đạt, chưa đạt, dự báo cuối nhiệm kỳ.
+Báo cáo gửi Tỉnh ủy|Soạn báo cáo của Đảng ủy gửi [cơ quan Tỉnh ủy] về [nội dung] theo đề cương hướng dẫn kèm theo.
+Chuẩn bị Bí thư tiếp công dân|Chuẩn bị hồ sơ buổi Bí thư tiếp công dân định kỳ: tóm tắt vụ việc, quá trình giải quyết, hướng trả lời.
+Lãnh đạo dân vận chính quyền|Soạn nội dung Đảng ủy chỉ đạo nâng cao công tác dân vận của chính quyền trong [lĩnh vực].
+Kế hoạch học tập nghị quyết|Soạn kế hoạch tổ chức học tập, quán triệt [nghị quyết] cho cán bộ, đảng viên toàn Đảng bộ.
+Lãnh đạo đại hội Mặt trận, đoàn thể|Soạn kế hoạch lãnh đạo đại hội [MTTQ/đoàn thể] cấp xã: nhân sự, văn kiện, tiến độ, phân công.
+Tình hình tư tưởng|Từ báo cáo các chi bộ, tổng hợp tình hình tư tưởng cán bộ, đảng viên, nhân dân và vấn đề cần định hướng.
+Phiếu xin ý kiến Ban Thường vụ|Soạn phiếu trình xin ý kiến Ban Thường vụ về [nội dung]: tóm tắt, các phương án, đề xuất.
+Thông báo ý kiến Thường trực|Soạn thông báo ý kiến của Thường trực Đảng ủy về [việc] gửi [cơ quan, đơn vị].
+`]);
+D.push(["VD","Văn phòng Đảng ủy","dang",`
+Lịch công tác Thường trực|Soạn lịch công tác tuần/tháng của Thường trực Đảng ủy từ các đề xuất dưới đây, xử lý chỗ trùng lịch.
+Tài liệu phiên họp Ban Thường vụ|Lập danh mục tài liệu và tóm tắt từng tờ trình cho phiên họp Ban Thường vụ ngày [ngày].
+Biên bản hội nghị Ban Chấp hành|Soạn biên bản hội nghị Ban Chấp hành lần thứ [số]: thành phần, nội dung, ý kiến, kết quả biểu quyết.
+Sổ theo dõi văn bản Đảng|Thiết kế bảng theo dõi văn bản đến, đi của Đảng ủy và cách phân loại theo độ khẩn, độ mật.
+Rà soát thể thức văn bản Đảng|Rà soát dự thảo văn bản của chi bộ dưới đây theo thể thức văn bản Đảng, đánh dấu lỗi và sửa.
+Báo cáo tình hình tháng|Soạn báo cáo tình hình tháng [tháng] của Đảng ủy gửi cấp trên từ báo cáo các cơ quan tham mưu và chi bộ.
+Theo dõi thực hiện kết luận|Lập bảng theo dõi việc thực hiện kết luận của Ban Thường vụ: nội dung, đơn vị, hạn, kết quả.
+Giấy triệu tập hội nghị|Soạn giấy triệu tập hội nghị Ban Chấp hành mở rộng: nội dung, thành phần, tài liệu nghiên cứu trước.
+Danh mục hồ sơ lưu trữ|Hướng dẫn lập danh mục hồ sơ năm [năm] của Văn phòng Đảng ủy: tên hồ sơ, thời hạn bảo quản, người lập.
+Đảng phí và kinh phí hoạt động|Soạn báo cáo thu, nộp đảng phí và quyết toán kinh phí hoạt động công tác Đảng [kỳ] từ số liệu kèm theo.
+Đôn đốc chi bộ nộp báo cáo|Soạn văn bản đôn đốc các chi bộ chưa nộp báo cáo [tên], kèm danh sách và hạn mới.
+Tóm tắt văn bản cấp trên|Tóm tắt văn bản [số hiệu] thành 1 trang: nội dung chính, việc Đảng ủy phải làm, đề xuất cơ quan chủ trì.
+Phiếu trình giải quyết công việc|Soạn phiếu trình Thường trực Đảng ủy giải quyết [việc]: nội dung, ý kiến cơ quan tham mưu, đề xuất.
+Quy chế phối hợp cơ quan tham mưu|Soạn dự thảo quy chế phối hợp giữa Văn phòng, Ban Xây dựng Đảng và Cơ quan Ủy ban Kiểm tra Đảng ủy.
+Chuẩn bị làm việc với đoàn tỉnh|Lập kế hoạch chuẩn bị làm việc với đoàn [cơ quan] của tỉnh: nội dung báo cáo, thành phần, hậu cần.
+Lịch trực và tiếp dân của Bí thư|Soạn lịch trực lãnh đạo và lịch tiếp công dân của Bí thư tháng [tháng] để công khai tại trụ sở.
+Quản lý văn bản mật|Soạn quy định nội bộ về quản lý văn bản mật tại Văn phòng Đảng ủy: tiếp nhận, sao chụp, lưu giữ, mang ra ngoài.
+Bản tin nội bộ cho Thường trực|Tổng hợp thông tin nổi bật trong tuần từ các báo cáo dưới đây thành bản tin nội bộ cho Thường trực.
+Tổng kết công tác văn phòng|Soạn báo cáo tổng kết công tác văn phòng cấp ủy năm [năm]: tham mưu, văn thư lưu trữ, tài chính, hậu cần.
+Hậu cần phục vụ đại hội|Lập kế hoạch hậu cần phục vụ đại hội Đảng bộ: hội trường, tài liệu, đón tiếp, an ninh, y tế, kinh phí.
+Hướng dẫn gửi báo cáo qua phần mềm|Soạn hướng dẫn chi bộ gửi báo cáo qua [phần mềm/hệ thống], kèm các lỗi thường gặp.
+Kiểm tra bảng thống kê chi bộ|Kiểm tra bảng thống kê [loại] của các chi bộ, chỉ ra số liệu thiếu, lệch và lập bảng tổng hợp.
+Thư chúc mừng, thăm hỏi|Soạn thư chúc mừng của Đảng ủy nhân [dịp] gửi [đối tượng], trang trọng, ngắn gọn.
+Đề cương báo cáo gửi chi bộ|Soạn đề cương và hạn nộp báo cáo [tên] gửi các chi bộ, có mẫu biểu số liệu kèm theo.
+Rà soát văn bản hết hiệu lực|Từ danh sách văn bản của Đảng ủy dưới đây, đề xuất văn bản cần sửa đổi, thay thế hoặc bãi bỏ.
+`]);
+D.push(["TC","Tổ chức, cán bộ, đảng viên","dang",`
+Kế hoạch phát triển đảng viên|Soạn kế hoạch kết nạp đảng viên năm [năm]: chỉ tiêu theo chi bộ, nguồn quần chúng, bồi dưỡng, thẩm định.
+Thẩm định hồ sơ kết nạp|Lập bảng kiểm hồ sơ kết nạp đảng viên [mã hồ sơ]: giấy tờ đã có, giấy tờ thiếu, điểm cần xác minh.
+Công nhận đảng viên chính thức|Lập danh sách đảng viên dự bị sắp hết thời hạn và bảng kiểm hồ sơ đề nghị công nhận chính thức.
+Hướng dẫn đánh giá, xếp loại|Soạn hướng dẫn chi bộ đánh giá, xếp loại tổ chức đảng và đảng viên năm [năm] theo quy định hiện hành.
+Tổng hợp kết quả xếp loại|Tổng hợp kết quả xếp loại của các chi bộ dưới đây thành bảng, tính tỷ lệ, so sánh với năm trước.
+Kiểm điểm tập thể chi bộ|Hướng dẫn chi bộ chuẩn bị bản kiểm điểm tập thể: kết quả, hạn chế, nguyên nhân, việc khắc phục kỳ trước.
+Chuyển sinh hoạt đảng|Soạn hướng dẫn quy trình chuyển sinh hoạt đảng chính thức, tạm thời, kèm danh mục giấy tờ.
+Quy hoạch cán bộ|Soạn tờ trình về quy hoạch cán bộ lãnh đạo cấp xã nhiệm kỳ [nhiệm kỳ]: tiêu chuẩn và bảng danh sách đề xuất.
+Kiện toàn chi ủy, bí thư chi bộ|Soạn tờ trình kiện toàn chi ủy, bí thư chi bộ [tên] do thay đổi nhân sự, nêu căn cứ và đề xuất.
+Sắp xếp chi bộ trực thuộc|Soạn đề án sắp xếp chi bộ trực thuộc sau khi điều chỉnh thôn, tổ dân phố: hiện trạng, phương án, lộ trình.
+Rà soát hồ sơ đảng viên|Lập bảng kiểm rà soát hồ sơ đảng viên: thành phần hồ sơ, thông tin cần cập nhật, trường hợp còn thiếu.
+Xét tặng Huy hiệu Đảng|Lập danh sách đảng viên đủ tuổi đảng xét tặng Huy hiệu Đảng đợt [đợt] và soạn tờ trình đề nghị.
+Miễn công tác, sinh hoạt đảng|Soạn hướng dẫn chi bộ xem xét đề nghị miễn công tác, sinh hoạt đảng cho đảng viên cao tuổi, sức khỏe yếu.
+Đảng viên đi làm ăn xa|Soạn phương án quản lý đảng viên đi làm ăn xa: liên lạc, sinh hoạt tạm thời, báo cáo định kỳ.
+Chất lượng sinh hoạt chi bộ|Soạn hướng dẫn nâng chất lượng sinh hoạt chi bộ thôn: chuẩn bị, nội dung, điều hành, ghi biên bản.
+Phương án bố trí cán bộ|Soạn phương án bố trí cán bộ [vị trí], đánh giá ưu điểm, hạn chế của từng phương án.
+Nhận xét cán bộ|Soạn bản nhận xét cán bộ [mã cán bộ] dựa trên kết quả công việc dưới đây: phẩm chất, năng lực, uy tín, hạn chế.
+Cập nhật dữ liệu đảng viên|Hướng dẫn chi bộ rà soát, cập nhật thông tin đảng viên trên cơ sở dữ liệu; lập bảng kiểm sai sót thường gặp.
+Thẩm tra lý lịch|Lập bảng việc cần làm khi thẩm tra lý lịch người vào Đảng có quan hệ cần làm rõ [mô tả], không đưa danh tính.
+Mô tả công việc khối Đảng|Lập khung mô tả công việc cho vị trí [chuyên viên văn phòng cấp ủy/tổ chức xây dựng Đảng] của Đảng ủy.
+Kế hoạch đào tạo, bồi dưỡng|Lập kế hoạch cử cán bộ đi đào tạo, bồi dưỡng năm [năm] theo tiêu chuẩn chức danh, có bảng danh sách.
+Thống kê chất lượng đội ngũ|Từ dữ liệu dưới đây, thống kê đội ngũ cán bộ theo tuổi, giới, dân tộc, trình độ; chỉ ra khoảng thiếu.
+Chỉ định bổ sung cấp ủy viên|Soạn tờ trình đề nghị chỉ định bổ sung cấp ủy viên chi bộ [tên], nêu lý do và tiêu chuẩn.
+Đảng viên phụ trách hộ gia đình|Soạn báo cáo sơ kết mô hình đảng viên phụ trách hộ gia đình tại [thôn]: cách làm, kết quả, nhân rộng.
+Giải đáp thủ tục Đảng|Soạn hướng dẫn trả lời câu hỏi của đảng viên về [thủ tục], nêu rõ quy định nào cần đối chiếu.
+`]);
+D.push(["TG","Tuyên giáo, dân vận","dang",`
+Đề cương tuyên truyền ngày lễ|Soạn đề cương tuyên truyền kỷ niệm [ngày lễ]: ý nghĩa lịch sử, thành tựu địa phương, nhiệm vụ hiện nay.
+Định hướng thông tin dư luận|Soạn định hướng thông tin cho báo cáo viên về [vấn đề dư luận quan tâm]: nội dung cần nói, cách trả lời.
+Tổng hợp dư luận xã hội|Tổng hợp tình hình dư luận xã hội tháng [tháng] từ các nguồn dưới đây, phân loại, đề xuất định hướng.
+Phản bác luận điệu sai trái|Soạn bài phản bác ngắn, có lý lẽ và dẫn chứng địa phương, đối với luận điệu sai trái về [nội dung].
+Học tập và làm theo Bác|Soạn kế hoạch thực hiện chuyên đề học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh năm [năm].
+Giới thiệu gương điển hình|Viết bài giới thiệu gương điển hình [mã nhân vật, lĩnh vực] từ thông tin dưới đây, trung thực, không phóng đại.
+Thi đua Dân vận khéo|Soạn kế hoạch thi đua "Dân vận khéo" năm [năm]: tiêu chí mô hình, đăng ký, đánh giá, khen thưởng.
+Báo cáo thực hiện dân chủ ở cơ sở|Soạn báo cáo kết quả thực hiện dân chủ ở cơ sở năm [năm]: công khai, dân bàn, dân quyết, dân giám sát.
+Nắm tình hình nhân dân|Soạn mẫu phiếu và hướng dẫn chi bộ nắm tình hình tư tưởng nhân dân hằng tháng.
+Bản tin loa truyền thanh|Soạn bản tin 3 phút phát trên loa truyền thanh về [nội dung], câu ngắn, dễ nghe.
+Hội nghị báo cáo viên|Chuẩn bị nội dung hội nghị báo cáo viên quý [quý]: thời sự nổi bật, nội dung cần thông tin cho nhân dân.
+Xây dựng đời sống văn hóa|Soạn kế hoạch Đảng ủy lãnh đạo xây dựng đời sống văn hóa ở khu dân cư năm [năm].
+Dân vận giải phóng mặt bằng|Soạn phương án dân vận vận động nhân dân [hiến đất/giải phóng mặt bằng] cho dự án [tên]: lực lượng, cách làm.
+Tuyên truyền chính sách tôn giáo|Soạn nội dung tuyên truyền chính sách tôn giáo, tín ngưỡng tới chức sắc, tín đồ tại [địa bàn], khách quan, tôn trọng.
+Tuyên truyền vùng đồng bào dân tộc|Soạn nội dung tuyên truyền phù hợp với đồng bào [dân tộc] về [chính sách], dùng ví dụ gần gũi với bản làng.
+Ứng xử trên mạng xã hội|Soạn hướng dẫn cán bộ, đảng viên ứng xử trên mạng xã hội: được chia sẻ gì, không đăng gì, khi gặp tin xấu độc.
+Câu hỏi cuộc thi tìm hiểu|Soạn 20 câu trắc nghiệm tìm hiểu về [chủ đề], có đáp án, chỉ dùng nội dung từ tài liệu kèm theo.
+Báo cáo tuyên giáo, dân vận|Tổng hợp báo cáo công tác tuyên giáo, dân vận [kỳ]: kết quả, mô hình, hạn chế, nhiệm vụ.
+Đề cương lịch sử Đảng bộ|Lập đề cương biên soạn lịch sử Đảng bộ giai đoạn [giai đoạn], ghi rõ nguồn tư liệu cần sưu tầm.
+Tọa đàm truyền thống|Soạn kịch bản tọa đàm truyền thống [sự kiện] với nhân chứng lịch sử, kèm câu hỏi gợi mở.
+Tuyên truyền kết quả đại hội|Soạn tài liệu tuyên truyền ngắn kết quả đại hội Đảng bộ cho nhân dân: mục tiêu, khâu đột phá.
+Phối hợp dân vận với Mặt trận|Soạn chương trình phối hợp giữa Ban Xây dựng Đảng và Ủy ban MTTQ về công tác dân vận năm [năm].
+Xử lý tin sai lệch|Soạn phương án xử lý khi xuất hiện tin sai lệch về [vụ việc]: xác minh, thông tin chính thức, kênh phát.
+Khảo sát sự hài lòng của nhân dân|Thiết kế phiếu khảo sát sự hài lòng của nhân dân với [hoạt động], câu hỏi ngắn, không thu thông tin định danh.
+Khẩu hiệu tuyên truyền|Đề xuất 10 khẩu hiệu tuyên truyền cho [dịp/phong trào], bám nội dung văn bản hướng dẫn kèm theo.
+`]);
+D.push(["KT","Kiểm tra, giám sát, kỷ luật đảng","dang",`
+Chương trình kiểm tra, giám sát năm|Soạn chương trình kiểm tra, giám sát năm [năm] của Đảng ủy và Ủy ban Kiểm tra: nội dung, đối tượng, thời gian, lực lượng.
+Kế hoạch kiểm tra chi bộ|Soạn kế hoạch kiểm tra chi bộ [tên] về [nội dung]: mục đích, nội dung, phương pháp, thời gian, đoàn kiểm tra.
+Đề cương báo cáo cho đối tượng kiểm tra|Soạn đề cương báo cáo gửi tổ chức đảng được kiểm tra về [nội dung], kèm danh mục hồ sơ cần cung cấp.
+Báo cáo kết quả kiểm tra|Từ hồ sơ kiểm tra dưới đây, soạn báo cáo kết quả: ưu điểm, hạn chế, vi phạm (nếu có), đề xuất.
+Thông báo kết luận kiểm tra|Soạn thông báo kết luận kiểm tra gửi [tổ chức đảng/đảng viên], kèm yêu cầu khắc phục và thời hạn.
+Giám sát chuyên đề|Soạn kế hoạch giám sát chuyên đề việc thực hiện [nội dung] tại [các chi bộ], kèm bộ câu hỏi giám sát.
+Giám sát thường xuyên|Soạn hướng dẫn ghi chép giám sát thường xuyên của cấp ủy viên phụ trách địa bàn và mẫu sổ theo dõi.
+Nhận diện dấu hiệu vi phạm|Phân tích thông tin dưới đây, nêu dấu hiệu cần làm rõ và căn cứ đề xuất kiểm tra; không kết luận vi phạm.
+Kiểm tra khi có dấu hiệu vi phạm|Soạn kế hoạch kiểm tra đảng viên [mã] khi có dấu hiệu vi phạm về [nội dung]: các bước, thời hạn, tài liệu.
+Quy trình xem xét kỷ luật|Lập bảng các bước xem xét kỷ luật đảng viên theo thẩm quyền chi bộ và Đảng ủy, mốc thời gian từng bước.
+Báo cáo đề xuất xử lý|Từ kết quả kiểm tra, soạn báo cáo đề xuất xử lý, nêu tình tiết tăng nặng, giảm nhẹ; hình thức kỷ luật ghi [cần xác định].
+Giải quyết tố cáo đảng viên|Soạn kế hoạch giải quyết tố cáo đối với đảng viên [mã]: nội dung tố cáo, xác minh, bảo vệ người tố cáo.
+Giải quyết khiếu nại kỷ luật đảng|Lập trình tự giải quyết khiếu nại kỷ luật đảng thuộc thẩm quyền, hồ sơ và thời hạn từng bước.
+Kiểm tra tài chính đảng|Soạn kế hoạch và bảng kiểm kiểm tra việc thu, nộp, quản lý đảng phí tại các chi bộ.
+Kê khai tài sản, thu nhập|Soạn hướng dẫn tổ chức kê khai tài sản, thu nhập năm [năm] cho người có nghĩa vụ kê khai thuộc diện Đảng ủy quản lý.
+Kiểm tra việc khắc phục|Soạn kế hoạch kiểm tra việc khắc phục sau kiểm tra tại [chi bộ], kèm bảng đối chiếu từng yêu cầu.
+Biên bản làm việc đoàn kiểm tra|Soạn biên bản làm việc của đoàn kiểm tra với [đối tượng]: nội dung làm rõ, ý kiến giải trình, tài liệu đã nhận.
+Báo cáo công tác kiểm tra năm|Tổng hợp báo cáo công tác kiểm tra, giám sát, thi hành kỷ luật năm [năm] kèm bảng số liệu.
+Quy chế làm việc Ủy ban Kiểm tra|Rà soát dự thảo quy chế làm việc của Ủy ban Kiểm tra Đảng ủy, đối chiếu quy chế mẫu, đề xuất bổ sung.
+Phân công thành viên Ủy ban Kiểm tra|Soạn quyết định phân công thành viên Ủy ban Kiểm tra phụ trách lĩnh vực, địa bàn, chi bộ.
+Sổ tay cán bộ kiểm tra mới|Soạn sổ tay ngắn cho cán bộ kiểm tra mới: các loại kiểm tra, hồ sơ, nguyên tắc, lỗi thường gặp.
+Phân loại đơn thư về đảng viên|Phân loại đơn thư dưới đây (đã ẩn danh): đơn thuộc thẩm quyền, đơn chuyển, đơn lưu; nêu lý do.
+Giám sát cán bộ chủ chốt|Soạn kế hoạch giám sát việc tu dưỡng, rèn luyện của đảng viên là cán bộ chủ chốt cấp xã năm [năm].
+Phòng ngừa vi phạm|Từ các vụ việc đã xử lý (ẩn danh), rút ra nhóm vi phạm hay gặp và đề xuất biện pháp phòng ngừa.
+Thông báo kết quả kỷ luật|Soạn thông báo kết quả thi hành kỷ luật đúng phạm vi thông báo; chỗ cần căn cứ ghi [CĂN CỨ PHÁP LÝ].
+`]);
+D.push(["CT","Bồi dưỡng lý luận chính trị","dang",`
+Kế hoạch mở lớp năm|Soạn kế hoạch mở lớp bồi dưỡng năm [năm] của Trung tâm Chính trị: loại lớp, đối tượng, số lượng, thời gian, kinh phí.
+Lớp nhận thức về Đảng|Soạn kế hoạch lớp bồi dưỡng nhận thức về Đảng khóa [số]: chương trình, giảng viên, đánh giá kết quả.
+Lớp đảng viên mới|Soạn kế hoạch lớp lý luận chính trị cho đảng viên mới, kèm lịch học và nội quy lớp.
+Giáo án bài giảng|Soạn giáo án bài [tên bài] theo chương trình [tên chương trình]: mục tiêu, nội dung, phương pháp, liên hệ địa phương.
+Liên hệ thực tiễn địa phương|Từ số liệu địa phương kèm theo, viết phần liên hệ thực tiễn cho bài [tên bài], không thêm số liệu khác.
+Câu hỏi ôn tập|Soạn 15 câu hỏi ôn tập bài [tên bài] có gợi ý trả lời, chỉ dựa trên giáo trình kèm theo.
+Đề kiểm tra cuối khóa|Soạn đề kiểm tra cuối khóa [tên lớp], đáp án, thang điểm; câu hỏi gắn với thực tiễn cơ sở.
+Hướng dẫn viết bài thu hoạch|Soạn hướng dẫn viết bài thu hoạch cho học viên: bố cục, yêu cầu liên hệ bản thân, tiêu chí chấm.
+Nhận xét bài thu hoạch|Đọc bài thu hoạch dưới đây (đã ẩn danh), nhận xét theo [tiêu chí] và đề xuất điểm để giảng viên quyết định.
+Hoạt động dạy học tích cực|Đề xuất hoạt động thảo luận nhóm, tình huống cho bài [tên bài] với học viên là cán bộ thôn, bản.
+Tình huống thảo luận|Soạn 5 tình huống thực tế ở cơ sở về [chủ đề] để học viên thảo luận, kèm câu hỏi định hướng.
+Bồi dưỡng cập nhật kiến thức|Soạn chương trình bồi dưỡng cập nhật [nghị quyết/luật mới] trong 1 ngày cho cán bộ, công chức.
+Báo cáo kết thúc lớp|Soạn báo cáo kết thúc lớp [tên lớp]: số học viên, kết quả học tập, nhận xét, kiến nghị.
+Nội quy lớp học|Soạn nội quy lớp học: giờ giấc, chuyên cần, kiểm tra, khen thưởng, xử lý vi phạm.
+Phiếu đánh giá lớp học|Thiết kế phiếu để học viên đánh giá lớp bồi dưỡng: nội dung, giảng viên, tổ chức, đề xuất.
+Kế hoạch dự giờ|Soạn kế hoạch dự giờ, đánh giá giảng viên kiêm chức năm [năm], kèm phiếu dự giờ.
+Tài liệu phát tay|Tóm tắt bài [tên bài] thành tài liệu phát tay 2 trang, có sơ đồ ý chính.
+Bố cục bài trình chiếu|Đề xuất bố cục bài trình chiếu [tên bài] khoảng [số] trang, mỗi trang 3 - 5 ý ngắn.
+Quyết định công nhận hoàn thành|Soạn quyết định công nhận hoàn thành lớp [tên lớp] kèm danh sách học viên theo mẫu.
+Phối hợp mở lớp|Soạn văn bản phối hợp với [cơ sở đào tạo] mở lớp [tên lớp] tại địa phương.
+Bổ sung giảng viên kiêm chức|Soạn văn bản đề nghị bổ sung giảng viên kiêm chức: tiêu chuẩn và danh sách đề xuất kèm theo.
+Học tập nghị quyết trực tuyến|Soạn hướng dẫn tổ chức học tập nghị quyết trực tuyến cho đảng viên ở thôn, bản xa trung tâm.
+Ngân hàng câu hỏi trắc nghiệm|Xây dựng 30 câu hỏi trắc nghiệm về [chuyên đề], chia mức nhận biết, thông hiểu, vận dụng.
+Tổng kết năm của Trung tâm|Soạn báo cáo tổng kết năm [năm] của Trung tâm Chính trị kèm bảng số lớp, học viên, kết quả.
+Đổi mới nội dung bồi dưỡng|Phân tích phản hồi học viên dưới đây và đề xuất nội dung, cách dạy cần đổi mới.
+`]);
+
+// Khối CHÍNH QUYỀN (HĐND, UBND, các phòng, Trung tâm PVHCC, BCH Quân sự)
+D.push(["HD","Hoạt động Hội đồng nhân dân","cq",`
+Chương trình kỳ họp|Soạn dự kiến chương trình kỳ họp thứ [số] của HĐND: nội dung, cơ quan trình, thời lượng, hình thức.
+Kế hoạch chuẩn bị kỳ họp|Soạn kế hoạch chuẩn bị kỳ họp: phân công soạn tờ trình, thẩm tra, gửi tài liệu, tiếp xúc cử tri.
+Dự thảo nghị quyết HĐND|Soạn dự thảo nghị quyết HĐND về [nội dung] trên cơ sở tờ trình của UBND kèm theo.
+Báo cáo thẩm tra|Soạn báo cáo thẩm tra của Ban [tên Ban] về [tờ trình]: tính hợp pháp, phù hợp thực tiễn, ý kiến đề nghị.
+Kế hoạch tiếp xúc cử tri|Soạn kế hoạch tiếp xúc cử tri trước kỳ họp: điểm tiếp xúc, tổ đại biểu, thành phần, nội dung.
+Tổng hợp ý kiến cử tri|Tổng hợp, phân loại ý kiến, kiến nghị cử tri dưới đây theo lĩnh vực và cơ quan có thẩm quyền giải quyết.
+Kết quả giải quyết kiến nghị cử tri|Soạn báo cáo kết quả giải quyết kiến nghị cử tri kỳ trước: đã xong, đang giải quyết, lý do chưa xong.
+Câu hỏi chất vấn|Soạn nhóm câu hỏi chất vấn về [lĩnh vực] cho đại biểu, bám số liệu báo cáo, không quy chụp.
+Kế hoạch giám sát chuyên đề|Soạn kế hoạch giám sát chuyên đề của Thường trực/Ban HĐND về [nội dung]: đối tượng, nội dung, thời gian.
+Báo cáo kết quả giám sát|Từ hồ sơ giám sát kèm theo, soạn báo cáo kết quả giám sát với kiến nghị cụ thể cho từng cơ quan.
+Lấy phiếu tín nhiệm|Lập bảng các bước tổ chức lấy phiếu tín nhiệm tại kỳ họp; căn cứ ghi [CĂN CỨ PHÁP LÝ] để đối chiếu.
+Diễn văn khai mạc kỳ họp|Soạn diễn văn khai mạc kỳ họp HĐND: bối cảnh, nội dung trọng tâm, đề nghị đối với đại biểu.
+Diễn văn bế mạc kỳ họp|Soạn diễn văn bế mạc, tóm tắt các nghị quyết đã thông qua và yêu cầu tổ chức thực hiện.
+Thông báo kết quả kỳ họp|Soạn thông báo kết quả kỳ họp gửi cử tri, ngắn gọn, dễ hiểu, nêu các quyết định chính.
+Chương trình giám sát năm|Soạn dự thảo nghị quyết chương trình giám sát năm [năm] của HĐND từ các đề xuất kèm theo.
+Hoạt động tổ đại biểu|Soạn hướng dẫn hoạt động của tổ đại biểu HĐND: tiếp công dân, tiếp xúc cử tri, báo cáo kết quả.
+Phiên giải trình|Soạn kế hoạch phiên giải trình của Thường trực HĐND về [vấn đề]: cơ quan giải trình, câu hỏi, kết luận.
+Báo cáo hoạt động HĐND|Soạn báo cáo kết quả hoạt động [6 tháng/năm] của HĐND, Thường trực HĐND và các Ban.
+Thẩm tra dự toán ngân sách|Đọc dự toán ngân sách kèm theo, nêu các điểm Ban cần làm rõ trước khi thẩm tra; không tự đưa định mức.
+Thẩm tra kế hoạch đầu tư công|Lập bảng câu hỏi thẩm tra kế hoạch đầu tư công [năm]: danh mục, nguồn vốn, tiến độ, thứ tự ưu tiên.
+Rà soát quy chế làm việc HĐND|Rà soát dự thảo quy chế làm việc của HĐND, chỉ ra điểm cần bổ sung về phối hợp, giám sát.
+Đôn đốc thực hiện nghị quyết|Soạn văn bản Thường trực HĐND đôn đốc UBND báo cáo kết quả thực hiện nghị quyết [số].
+Đại biểu tiếp công dân|Soạn phiếu ghi chép và mẫu chuyển đơn khi đại biểu HĐND tiếp công dân.
+Kỹ năng cho đại biểu mới|Soạn tài liệu 2 trang về kỹ năng chất vấn, phát biểu, giám sát cho đại biểu HĐND lần đầu tham gia.
+Tóm tắt tài liệu kỳ họp|Tóm tắt các tờ trình kỳ họp thành bảng: nội dung, vấn đề cần chú ý, câu hỏi gợi ý cho đại biểu.
+`]);
+D.push(["DH","Điều hành UBND, tham mưu tổng hợp","cq",`
+Chương trình công tác năm UBND|Soạn chương trình công tác năm [năm] của UBND: nội dung trình, cơ quan chủ trì, thời gian.
+Lịch công tác tuần lãnh đạo|Soạn lịch công tác tuần của Chủ tịch, các Phó Chủ tịch UBND từ các đăng ký dưới đây; chỉ ra chỗ trùng.
+Kế hoạch phát triển kinh tế - xã hội|Soạn dự thảo kế hoạch phát triển kinh tế - xã hội năm [năm]: chỉ tiêu, nhiệm vụ, giải pháp theo ngành.
+Báo cáo kinh tế - xã hội tháng|Tổng hợp báo cáo kinh tế - xã hội tháng [tháng] từ báo cáo các phòng: kết quả, khó khăn, đề xuất.
+Phân công lãnh đạo UBND|Soạn quyết định phân công nhiệm vụ Chủ tịch, các Phó Chủ tịch và Ủy viên UBND theo lĩnh vực.
+Rà soát quy chế làm việc UBND|Rà soát dự thảo quy chế làm việc của UBND: chế độ trách nhiệm, phối hợp, giải quyết công việc, hội họp.
+Phiếu trình Chủ tịch|Soạn phiếu trình Chủ tịch UBND giải quyết [việc]: tóm tắt, căn cứ, ý kiến của phòng, phương án đề xuất.
+Nhắc việc quá hạn|Từ bảng theo dõi kèm theo, lập danh sách nhiệm vụ quá hạn, sắp đến hạn và nội dung nhắc từng đầu mối.
+Nội dung giao ban tuần|Chuẩn bị nội dung giao ban tuần: việc đã xong, việc vướng mắc, việc cần Chủ tịch quyết định.
+Nhiệm vụ phân cấp, ủy quyền|Lập bảng nhiệm vụ cấp tỉnh phân cấp, ủy quyền cho cấp xã theo văn bản kèm theo và bộ phận thực hiện.
+Phương án xử lý tình huống|Soạn 2 - 3 phương án xử lý [tình huống], so sánh ưu, nhược, nguồn lực, rủi ro; đề xuất phương án chọn.
+Phối hợp với cơ quan cấp tỉnh|Soạn quy chế phối hợp giữa UBND xã với [cơ quan cấp tỉnh đặt tại địa bàn] về [lĩnh vực].
+Vận hành chính quyền 2 cấp|Soạn báo cáo tình hình vận hành chính quyền địa phương 2 cấp tại địa phương: kết quả, vướng mắc, kiến nghị.
+Phản hồi thông tin báo chí|Soạn văn bản phản hồi thông tin báo chí phản ánh về [vụ việc]: kết quả xác minh, biện pháp xử lý.
+Đối ngoại địa phương|Soạn kế hoạch đón tiếp đoàn [đối ngoại]: nội dung, lễ tân, phiên dịch, nội dung cần xin ý kiến cấp trên.
+Quản trị trụ sở sau sắp xếp|Soạn kế hoạch quản lý tài sản, phương tiện, trụ sở làm việc sau sắp xếp: kiểm kê, bố trí, sửa chữa.
+Phòng cháy tại trụ sở|Soạn phương án phòng cháy, chữa cháy và thoát nạn tại trụ sở UBND, phân công lực lượng tại chỗ.
+Chỉ đạo dịp lễ, Tết|Soạn văn bản chỉ đạo nhiệm vụ trọng tâm dịp [Tết/lễ] cho các phòng và thôn, tổ dân phố.
+Ước thực hiện cả năm|Từ số liệu 9 tháng, ước thực hiện cả năm từng chỉ tiêu, nêu cách ước tính để kiểm chứng.
+Hội nghị với trưởng thôn|Soạn nội dung hội nghị UBND với trưởng thôn, tổ trưởng tổ dân phố: tình hình, nhiệm vụ, giải đáp thắc mắc.
+Phân tích điểm nghẽn|Từ báo cáo dưới đây, xác định 3 điểm nghẽn lớn nhất, nguyên nhân và cách tháo gỡ thuộc thẩm quyền cấp xã.
+Việc cần xin ý kiến cấp tỉnh|Lập danh mục vướng mắc vượt thẩm quyền cấp xã, kèm cơ quan cấp tỉnh có thẩm quyền và nội dung xin ý kiến.
+Kiểm tra kỷ luật công vụ|Soạn kế hoạch kiểm tra công vụ nội bộ: kỷ luật giờ giấc, thái độ phục vụ, tiến độ xử lý hồ sơ.
+Báo cáo nhanh sự cố|Soạn báo cáo nhanh của UBND về [sự cố] gửi tỉnh: thiệt hại, biện pháp đã làm, đề nghị hỗ trợ.
+Rà soát văn bản trình ký|Rà soát văn bản trình Chủ tịch ký: thẩm quyền ký, căn cứ, thể thức, nơi nhận; lập phiếu sửa.
+`]);
+D.push(["TP","Tư pháp, hộ tịch, chứng thực","cq",`
+Hướng dẫn đăng ký khai sinh|Soạn hướng dẫn người dân hồ sơ đăng ký khai sinh và các trường hợp đặc biệt; căn cứ ghi [CĂN CỨ PHÁP LÝ].
+Bảng kiểm đăng ký kết hôn|Soạn bảng kiểm hồ sơ đăng ký kết hôn và các lỗi thường gặp cần hướng dẫn người dân bổ sung.
+Đăng ký khai tử|Soạn hướng dẫn thủ tục khai tử và việc phối hợp thông tin với các cơ quan liên quan.
+Xác định loại việc hộ tịch|Phân tích yêu cầu [mô tả, đã ẩn danh]: thuộc loại thủ tục hộ tịch nào, hồ sơ cần có, cơ quan có thẩm quyền.
+Bảng niêm yết chứng thực|Soạn bảng hướng dẫn các việc chứng thực thực hiện tại cấp xã và các trường hợp không được chứng thực để niêm yết.
+Kế hoạch phổ biến pháp luật|Soạn kế hoạch phổ biến, giáo dục pháp luật năm [năm]: nội dung, đối tượng, hình thức, phân công.
+Tờ gấp tuyên truyền pháp luật|Soạn tờ gấp tuyên truyền [luật/chủ đề] cho người dân: hỏi - đáp ngắn, ví dụ thực tế.
+Hướng dẫn tổ hòa giải|Soạn hướng dẫn tổ hòa giải xử lý vụ việc [loại tranh chấp]: các bước, lời lẽ, lập biên bản hòa giải.
+Báo cáo hòa giải ở cơ sở|Tổng hợp kết quả hòa giải ở cơ sở [kỳ] từ báo cáo các tổ: số vụ, thành, không thành, nguyên nhân.
+Tự đánh giá tiếp cận pháp luật|Lập bảng tự đánh giá các tiêu chí tiếp cận pháp luật, chỉ ra tiêu chí chưa đạt và việc cần làm.
+Rà soát văn bản quy phạm|Rà soát văn bản [tên] của địa phương: thẩm quyền, căn cứ, hiệu lực, nội dung trái hoặc chồng chéo cần xử lý.
+Quy trình ban hành văn bản quy phạm|Lập các bước soạn thảo, lấy ý kiến, thẩm định, ban hành văn bản [loại] cấp xã và mốc thời gian.
+Dự thảo quyết định xử phạt|Soạn dự thảo quyết định xử phạt từ biên bản [đã ẩn danh]; mức phạt và điều khoản áp dụng ghi [cần xác định].
+Rà soát biên bản vi phạm|Rà soát biên bản vi phạm hành chính dưới đây: thông tin còn thiếu, sai sót có thể làm biên bản không hợp lệ.
+Giới thiệu trợ giúp pháp lý|Soạn thông tin hướng dẫn người thuộc diện trợ giúp pháp lý liên hệ tổ chức trợ giúp pháp lý của tỉnh.
+Theo dõi thi hành pháp luật|Soạn báo cáo theo dõi tình hình thi hành pháp luật trong lĩnh vực [lĩnh vực] tại địa phương.
+Tủ sách pháp luật|Soạn kế hoạch duy trì tủ sách pháp luật và danh mục tài liệu cần cập nhật.
+Hồ sơ nuôi con nuôi|Soạn bảng kiểm hồ sơ đăng ký nuôi con nuôi trong nước tại cấp xã, nêu điểm cần xác minh.
+Số hóa dữ liệu hộ tịch|Soạn quy trình số hóa, đối chiếu sổ hộ tịch cũ với cơ sở dữ liệu điện tử, phân công người thực hiện.
+Biện pháp giáo dục tại xã, phường|Lập bảng các bước áp dụng biện pháp giáo dục tại xã, phường và hồ sơ cần có; căn cứ ghi [CĂN CỨ PHÁP LÝ].
+Rà soát hương ước, quy ước|Rà soát dự thảo hương ước, quy ước thôn [tên]: nội dung trái pháp luật, hủ tục, chế tài vượt thẩm quyền.
+Hướng dẫn pháp luật ban đầu|Soạn câu trả lời hướng dẫn chung cho câu hỏi pháp luật dưới đây, nói rõ khi nào cần luật sư hoặc cơ quan chuyên môn.
+Ngày Pháp luật Việt Nam|Soạn kế hoạch hưởng ứng Ngày Pháp luật Việt Nam năm [năm] tại địa phương.
+Báo cáo công tác tư pháp|Tổng hợp báo cáo công tác tư pháp [kỳ]: hộ tịch, chứng thực, phổ biến pháp luật, hòa giải, xử lý vi phạm.
+Tự kiểm tra sổ hộ tịch|Soạn bảng kiểm tự kiểm tra sổ hộ tịch: ghi chép, sửa chữa, chữ ký, đóng dấu, lưu trữ.
+`]);
+D.push(["TD","Tiếp công dân, khiếu nại, tố cáo, phòng chống tham nhũng","cq",`
+Phân loại đơn|Phân loại đơn dưới đây (đã ẩn danh): khiếu nại, tố cáo, kiến nghị, phản ánh; xác định thẩm quyền và hướng xử lý.
+Phiếu chuyển đơn|Soạn phiếu chuyển đơn đến [cơ quan có thẩm quyền] và văn bản thông báo cho người gửi đơn.
+Lịch tiếp công dân|Soạn lịch tiếp công dân định kỳ của Chủ tịch UBND và thông báo niêm yết công khai.
+Chuẩn bị buổi tiếp công dân|Chuẩn bị hồ sơ buổi tiếp công dân về vụ việc [mô tả]: tóm tắt, quá trình giải quyết, hướng trả lời.
+Thông báo thụ lý khiếu nại|Soạn thông báo thụ lý giải quyết khiếu nại về [nội dung] gửi người khiếu nại và cơ quan liên quan.
+Kế hoạch xác minh|Soạn kế hoạch xác minh nội dung khiếu nại [nội dung]: điểm cần làm rõ, tài liệu, người thực hiện, thời hạn.
+Báo cáo kết quả xác minh|Từ tài liệu thu thập kèm theo, soạn báo cáo kết quả xác minh từng nội dung, chứng cứ, kiến nghị.
+Quyết định giải quyết khiếu nại lần đầu|Dự thảo quyết định giải quyết khiếu nại lần đầu từ báo cáo xác minh: căn cứ, nhận định đúng, sai, quyết định.
+Kịch bản đối thoại|Soạn kịch bản đối thoại với người khiếu nại: mở đầu, nêu nội dung, lắng nghe, giải thích, kết thúc, biên bản.
+Kế hoạch giải quyết tố cáo|Soạn kế hoạch giải quyết tố cáo về [nội dung], chú trọng giữ bí mật và bảo vệ người tố cáo.
+Kết luận nội dung tố cáo|Từ báo cáo xác minh, soạn dự thảo kết luận nội dung tố cáo: đúng, đúng một phần hay sai; biện pháp xử lý.
+Vụ việc phức tạp, kéo dài|Phân tích vụ việc [mô tả]: diễn biến, các lần giải quyết, điểm vướng, phương án chấm dứt.
+Hướng dẫn gửi đơn đúng nơi|Soạn văn bản hướng dẫn công dân gửi đơn đến cơ quan có thẩm quyền đối với vụ việc [mô tả], lịch sự, rõ ràng.
+Báo cáo tiếp công dân|Tổng hợp báo cáo tiếp công dân, giải quyết đơn thư [kỳ] kèm bảng số liệu và nhận xét.
+Sổ theo dõi đơn thư|Thiết kế bảng theo dõi đơn thư: ngày nhận, loại đơn, nội dung tóm tắt, thẩm quyền, hạn, kết quả.
+Tập trung đông người|Soạn phương án xử lý khi công dân tập trung đông người tại trụ sở: lực lượng, tiếp nhận, đối thoại, an ninh.
+Kế hoạch phòng, chống tham nhũng|Soạn kế hoạch phòng, chống tham nhũng, tiêu cực năm [năm] của UBND.
+Danh mục nội dung công khai|Lập danh mục nội dung UBND phải công khai, hình thức và thời điểm công khai; căn cứ ghi [CĂN CỨ PHÁP LÝ].
+Chuyển đổi vị trí công tác|Soạn kế hoạch chuyển đổi vị trí công tác đối với công chức thuộc diện phải định kỳ chuyển đổi.
+Tổ chức kê khai tài sản|Soạn kế hoạch tổ chức kê khai và công khai bản kê khai tài sản, thu nhập năm [năm] tại UBND.
+Tự kiểm tra trách nhiệm người đứng đầu|Soạn bảng tự kiểm tra trách nhiệm người đứng đầu về tiếp công dân, giải quyết đơn, phòng chống tham nhũng.
+Thực hiện kết luận thanh tra|Lập bảng theo dõi thực hiện kết luận thanh tra [số]: nội dung, đơn vị, hạn, kết quả, tồn tại.
+Biên bản làm việc với người khiếu nại|Soạn biên bản làm việc với người khiếu nại về [nội dung], ghi đủ ý kiến các bên.
+Vụ việc tồn đọng|Từ danh sách vụ việc tồn đọng kèm theo, phân nhóm nguyên nhân và đề xuất thứ tự ưu tiên xử lý.
+Tuyên truyền quyền khiếu nại, tố cáo|Soạn tài liệu ngắn hướng dẫn người dân quyền, nghĩa vụ khi khiếu nại, tố cáo, phản ánh.
+`]);
+D.push(["HC","Thủ tục hành chính, một cửa","cq",`
+Hướng dẫn hồ sơ thủ tục|Soạn hướng dẫn hồ sơ thủ tục [tên thủ tục]: thành phần, số lượng, thời hạn, phí, nơi nộp; căn cứ ghi [CĂN CỨ PHÁP LÝ].
+Phiếu hướng dẫn bổ sung hồ sơ|Soạn phiếu hướng dẫn bổ sung hồ sơ một lần, đầy đủ, nêu rõ giấy tờ còn thiếu và lý do.
+Phiếu xin lỗi trả kết quả trễ|Soạn phiếu xin lỗi và hẹn lại ngày trả kết quả hồ sơ [mã hồ sơ], nêu lý do trễ hạn.
+Văn bản từ chối giải quyết|Soạn văn bản từ chối giải quyết hồ sơ [loại], nêu lý do và căn cứ để người dân biết cách khắc phục.
+Giao tiếp tại quầy|Soạn kịch bản giao tiếp của công chức tiếp nhận: chào hỏi, hướng dẫn, cách xử lý khi người dân bức xúc.
+Bảng niêm yết thủ tục|Chuyển danh mục thủ tục kèm theo thành bảng niêm yết: tên thủ tục, thời hạn, phí, quầy tiếp nhận.
+Quy chế hoạt động Trung tâm|Soạn dự thảo quy chế hoạt động của Trung tâm Phục vụ hành chính công: tiếp nhận, luân chuyển, trả kết quả.
+Quy trình nội bộ một thủ tục|Lập quy trình nội bộ giải quyết thủ tục [tên] dạng bảng: bước, người làm, thời gian, kết quả mỗi bước.
+Báo cáo giải quyết hồ sơ|Tổng hợp báo cáo giải quyết thủ tục [kỳ]: tiếp nhận, đúng hạn, trễ hạn, trực tuyến; phân tích nguyên nhân trễ.
+Phân tích hồ sơ trễ hạn|Từ danh sách hồ sơ trễ hạn kèm theo, phân nhóm nguyên nhân và đề xuất biện pháp cho từng nhóm.
+Phiếu đánh giá sự hài lòng|Thiết kế phiếu đánh giá sự hài lòng của người dân sau khi giải quyết thủ tục, 6 - 8 câu hỏi.
+Trả lời phản ánh về phục vụ|Soạn văn bản trả lời phản ánh của người dân về [thủ tục/thái độ phục vụ], nêu kết quả kiểm tra.
+Kiến nghị đơn giản hóa thủ tục|Phân tích thủ tục [tên], đề xuất cắt giảm thành phần hồ sơ, thời gian và lý do để kiến nghị cấp trên.
+Hướng dẫn nộp hồ sơ trực tuyến|Soạn hướng dẫn nộp hồ sơ [thủ tục] trực tuyến, có bước tra cứu trạng thái hồ sơ.
+Số hóa khi tiếp nhận|Soạn quy trình số hóa thành phần hồ sơ khi tiếp nhận và quy tắc đặt tên, lưu tệp thống nhất.
+Nhóm thủ tục liên thông|Soạn hướng dẫn nhóm thủ tục liên thông [tên nhóm] cho người dân: nộp một lần, nhận kết quả ở đâu.
+Thủ tục không phụ thuộc địa giới|Soạn thông báo cho người dân về các thủ tục được tiếp nhận không phụ thuộc địa giới hành chính theo danh mục kèm theo.
+Bố trí quầy theo lượng hồ sơ|Đề xuất bố trí quầy và lịch trực từ số liệu lượng hồ sơ theo lĩnh vực, khung giờ kèm theo.
+Nội quy Trung tâm|Soạn nội quy dành cho tổ chức, công dân đến giao dịch tại Trung tâm Phục vụ hành chính công.
+Tập huấn công chức tiếp nhận|Soạn nội dung tập huấn 1 buổi cho công chức tiếp nhận: quy trình, phần mềm, giao tiếp, tình huống.
+Xử lý phiếu góp ý|Soạn quy trình mở hộp thư góp ý, xử lý và trả lời phiếu góp ý, thời hạn trả lời.
+Tình huống khó tại quầy|Soạn cách xử lý 5 tình huống: người cao tuổi, người không biết chữ, nghi giấy tờ giả, quay phim, gây rối.
+Cập nhật danh mục thủ tục|So sánh danh mục thủ tục mới công bố với danh mục cũ, lập bảng thủ tục thêm, bỏ, sửa cần cập nhật niêm yết.
+Theo dõi thu phí, lệ phí|Lập bảng theo dõi thu phí, lệ phí theo ngày và mẫu đối chiếu cuối tháng.
+Báo cáo cải cách thủ tục|Soạn phần cải cách thủ tục hành chính trong báo cáo cải cách hành chính [kỳ].
+`]);
+D.push(["NV","Nội vụ, công chức, thi đua, văn thư","cq",`
+Khung đề án vị trí việc làm|Lập khung đề án vị trí việc làm công chức: danh mục vị trí, mô tả công việc, khung năng lực, số lượng.
+Bản mô tả công việc|Soạn bản mô tả công việc vị trí [tên vị trí]: nhiệm vụ, sản phẩm đầu ra, quan hệ công tác, tiêu chuẩn.
+Đánh giá, xếp loại công chức|Soạn hướng dẫn đánh giá, xếp loại công chức năm [năm] và lịch thực hiện.
+Kế hoạch tuyển dụng|Soạn kế hoạch tuyển dụng công chức [vị trí]: nhu cầu, điều kiện, hình thức, thời gian; căn cứ ghi [CĂN CỨ PHÁP LÝ].
+Kế hoạch cải cách hành chính|Soạn kế hoạch cải cách hành chính năm [năm]: các nội dung, chỉ tiêu, phân công, thời hạn.
+Báo cáo cải cách hành chính|Tổng hợp báo cáo cải cách hành chính [kỳ] theo tiêu chí chấm điểm chỉ số của tỉnh.
+Phát động thi đua năm|Soạn kế hoạch phát động thi đua năm [năm] và tiêu chí bình xét danh hiệu cho tập thể, cá nhân.
+Báo cáo thành tích|Soạn báo cáo thành tích đề nghị khen thưởng cho [tập thể/cá nhân] từ dữ liệu kèm theo, đúng mẫu.
+Bảng kiểm hồ sơ khen thưởng|Lập bảng kiểm hồ sơ đề nghị khen thưởng [hình thức]: thành phần, biên bản họp, thời hạn gửi.
+Danh mục hồ sơ năm|Soạn danh mục hồ sơ năm [năm] của UBND và hướng dẫn lập hồ sơ, nộp lưu.
+Theo dõi chế độ công chức|Lập bảng theo dõi nâng lương, phụ cấp, nghỉ hưu của công chức trong năm; mức hưởng ghi [cần xác định].
+Quy trình kỷ luật công chức|Lập bảng các bước xử lý kỷ luật công chức theo thẩm quyền cấp xã; căn cứ ghi [CĂN CỨ PHÁP LÝ].
+Quy tắc ứng xử|Soạn quy tắc ứng xử của cán bộ, công chức: với người dân, với đồng nghiệp, trên mạng xã hội.
+Quản lý hội, quỹ|Soạn báo cáo tình hình hoạt động các hội, quỹ trên địa bàn và đề xuất quản lý.
+Bầu trưởng thôn, tổ trưởng|Soạn hướng dẫn bầu trưởng thôn, tổ trưởng tổ dân phố: quy trình, biểu mẫu, phân công.
+Rà soát địa giới hành chính|Soạn báo cáo rà soát hồ sơ, mốc địa giới hành chính sau sắp xếp và các điểm chưa thống nhất.
+Quản lý nhà nước về thanh niên|Soạn kế hoạch quản lý nhà nước về công tác thanh niên năm [năm].
+Bồi dưỡng công chức theo vị trí|Lập kế hoạch bồi dưỡng công chức năm [năm] theo vị trí việc làm, có bảng nhu cầu từng người.
+Kiểm tra kỷ luật, kỷ cương|Soạn kế hoạch kiểm tra việc chấp hành kỷ luật, kỷ cương hành chính tại các phòng chuyên môn.
+Nhận xét công chức tập sự|Soạn mẫu nhận xét, đánh giá kết quả tập sự của công chức [vị trí] với tiêu chí cụ thể.
+Tự chấm chỉ số cải cách hành chính|Lập bảng tự chấm điểm chỉ số cải cách hành chính, nêu tài liệu kiểm chứng cho từng tiêu chí.
+Hợp đồng lao động hỗ trợ|Soạn tờ trình đề nghị ký hợp đồng lao động hỗ trợ công chức tại vị trí [tên], nêu khối lượng công việc.
+Đối chiếu công chức với vị trí|Đối chiếu danh sách công chức với danh mục vị trí việc làm, chỉ ra vị trí thiếu người, người chưa đúng chuyên môn.
+Khen thưởng đột xuất|Soạn quyết định và danh sách khen thưởng đột xuất cho [cá nhân/tập thể] có thành tích [mô tả].
+Báo cáo công tác nội vụ|Tổng hợp báo cáo công tác nội vụ năm [năm]: tổ chức bộ máy, công chức, cải cách hành chính, thi đua, văn thư.
+`]);
+D.push(["XH","Lao động, người có công, dân tộc, tôn giáo","cq",`
+Chi trả trợ cấp người có công|Lập bảng theo dõi chi trả trợ cấp người có công tháng [tháng]: đối tượng (mã hóa), mức hưởng, biến động.
+Hồ sơ xác nhận người có công|Soạn bảng kiểm hồ sơ đề nghị xác nhận [diện người có công], nêu giấy tờ thiếu và điểm cần xác minh.
+Tri ân 27/7|Soạn kế hoạch thăm, tặng quà và hoạt động tri ân dịp 27/7 năm [năm].
+Chăm sóc nghĩa trang liệt sĩ|Soạn kế hoạch chăm sóc, tu bổ nghĩa trang liệt sĩ, nhà bia ghi tên liệt sĩ trên địa bàn.
+Tư vấn việc làm cho thanh niên|Soạn kế hoạch tư vấn việc làm, đi làm việc ở nước ngoài theo hợp đồng cho thanh niên năm [năm].
+Khảo sát nhu cầu học nghề|Soạn kế hoạch và mẫu phiếu khảo sát nhu cầu học nghề của lao động nông thôn.
+Tuyên truyền bảo hiểm xã hội tự nguyện|Soạn nội dung tuyên truyền bảo hiểm xã hội tự nguyện cho lao động tự do; mức đóng ghi [cần xác định].
+Kế hoạch bình đẳng giới|Soạn kế hoạch thực hiện công tác bình đẳng giới năm [năm] và các chỉ tiêu theo dõi.
+Báo cáo chính sách dân tộc|Soạn báo cáo thực hiện chính sách dân tộc [kỳ]: chính sách đang triển khai, kết quả, vướng mắc.
+Phát huy người có uy tín|Soạn kế hoạch phát huy vai trò người có uy tín trong đồng bào dân tộc thiểu số tại các thôn, bản.
+Theo dõi chương trình mục tiêu quốc gia|Lập bảng theo dõi các dự án thuộc chương trình mục tiêu quốc gia: nội dung, vốn, tiến độ, vướng mắc.
+Tình hình hoạt động tôn giáo|Soạn báo cáo tình hình hoạt động tôn giáo trên địa bàn [kỳ], khách quan, không suy diễn.
+Đăng ký sinh hoạt tôn giáo tập trung|Lập bảng hồ sơ và trình tự xem xét đăng ký sinh hoạt tôn giáo tập trung thuộc thẩm quyền cấp xã.
+Quản lý lễ hội tín ngưỡng|Soạn kế hoạch quản lý lễ hội tín ngưỡng [tên]: an ninh, văn minh, vệ sinh môi trường.
+Trẻ em có hoàn cảnh đặc biệt|Lập kế hoạch hỗ trợ trẻ em có hoàn cảnh đặc biệt: rà soát, can thiệp, theo dõi.
+Tiếp nhận tin bạo lực gia đình|Soạn quy trình tiếp nhận, xử lý thông tin về bạo lực gia đình, giữ bí mật cho người bị bạo lực.
+Kiến nghị của người lao động|Soạn hướng dẫn người lao động gửi kiến nghị khi bị nợ lương, mất việc; nêu cơ quan có thẩm quyền.
+Thu thập cung - cầu lao động|Thiết kế mẫu thu thập thông tin cung - cầu lao động tại thôn và bảng tổng hợp toàn địa bàn.
+Đối thoại chính sách với đồng bào|Soạn nội dung buổi đối thoại chính sách với đồng bào [dân tộc] về [chính sách].
+Chăm sóc người cao tuổi|Soạn kế hoạch mừng thọ, chăm sóc người cao tuổi năm [năm].
+Phòng ngừa lao động trẻ em|Soạn nội dung tuyên truyền phòng ngừa lao động trẻ em tại địa phương.
+Hộ di cư, tái định cư|Lập bảng theo dõi hộ di cư, tái định cư được hưởng chính sách, thông tin hộ đã mã hóa.
+Tình hình đời sống đồng bào|Tổng hợp tình hình đời sống, tư tưởng đồng bào dân tộc thiểu số tháng [tháng] từ báo cáo các thôn.
+Phòng chống mua bán người|Soạn nội dung tuyên truyền phòng chống mua bán người, chú ý địa bàn giáp biên giới.
+Báo cáo lao động - xã hội năm|Tổng hợp báo cáo năm [năm] lĩnh vực lao động, người có công, dân tộc, tôn giáo.
+`]);
+D.push(["YT","Y tế, dân số, bảo trợ xã hội","cq",`
+Kế hoạch phòng chống dịch|Soạn kế hoạch phòng chống [bệnh dịch]: các tình huống, biện pháp, phân công, nguồn lực.
+Tổ chức tiêm chủng|Soạn thông báo và kế hoạch tổ chức đợt tiêm chủng [vắc xin] phối hợp với trạm y tế.
+Bảo hiểm y tế toàn dân|Soạn kế hoạch nâng tỷ lệ tham gia bảo hiểm y tế, phân tích nhóm chưa tham gia từ số liệu kèm theo.
+An toàn thực phẩm dịp lễ hội|Soạn kế hoạch bảo đảm an toàn thực phẩm dịp [Tết/lễ hội], kiểm tra cơ sở theo phân cấp.
+Xử lý ngộ độc thực phẩm|Soạn quy trình xử lý ban đầu khi xảy ra ngộ độc thực phẩm tập thể trên địa bàn.
+Kế hoạch công tác dân số|Soạn kế hoạch công tác dân số năm [năm]: chỉ tiêu, nội dung truyền thông, phối hợp cộng tác viên.
+Dinh dưỡng trẻ em vùng cao|Soạn nội dung truyền thông dinh dưỡng cho trẻ dưới 5 tuổi phù hợp đồng bào vùng cao.
+Hồ sơ trợ cấp xã hội hằng tháng|Soạn bảng kiểm hồ sơ đề nghị hưởng trợ cấp xã hội hằng tháng; mức hưởng ghi [cần xác định].
+Rà soát đối tượng bảo trợ|Từ danh sách (đã mã hóa) kèm theo, chỉ ra trường hợp cần rà soát lại điều kiện hưởng.
+Hỗ trợ đột xuất|Soạn tờ trình hỗ trợ đột xuất cho hộ gặp [rủi ro], nêu thiệt hại và đề nghị; mức hỗ trợ ghi [cần xác định].
+Phòng chống tệ nạn xã hội|Soạn kế hoạch phòng chống tệ nạn xã hội tại khu dân cư năm [năm].
+Quản lý người sử dụng ma túy|Soạn quy trình phối hợp quản lý người sử dụng trái phép chất ma túy tại cộng đồng; căn cứ ghi [CĂN CỨ PHÁP LÝ].
+Vệ sinh hộ gia đình, nước sạch|Soạn nội dung tuyên truyền vệ sinh hộ gia đình, nhà tiêu hợp vệ sinh, sử dụng nước sạch.
+Phòng bệnh theo mùa|Soạn bản tin loa truyền thanh phòng [bệnh theo mùa], dễ hiểu, nêu dấu hiệu cần đi khám.
+Báo cáo y tế - dân số tháng|Tổng hợp báo cáo y tế - dân số tháng [tháng] từ số liệu trạm y tế và cộng tác viên.
+Kiểm tra cơ sở dịch vụ y tế|Soạn kế hoạch phối hợp kiểm tra cơ sở bán thuốc, dịch vụ y tế trên địa bàn theo phân cấp.
+Xác định mức độ khuyết tật|Soạn hướng dẫn thủ tục xác định mức độ khuyết tật: hồ sơ, trình tự, thời hạn.
+Sơ cứu ban đầu|Soạn tài liệu ngắn sơ cứu ban đầu khi [đuối nước/rắn cắn/tai nạn], nhắc gọi cấp cứu kịp thời.
+Khám sàng lọc người cao tuổi|Soạn kế hoạch tổ chức khám sàng lọc cho người cao tuổi phối hợp với [đơn vị y tế].
+Y tế trường học|Soạn kế hoạch phối hợp với trường học về y tế trường học và bữa ăn bán trú an toàn.
+Sổ sức khỏe điện tử|Soạn hướng dẫn người dân sử dụng sổ sức khỏe điện tử trên ứng dụng định danh điện tử.
+Cảnh báo bệnh lây từ động vật|Soạn thông báo khẩn khi có ca bệnh [tên] lây từ động vật, kèm khuyến cáo cho người dân.
+Tự đánh giá tiêu chí y tế|Lập bảng tự đánh giá tiêu chí y tế trong [bộ tiêu chí], chỉ ra phần chưa đạt.
+Vận động hỗ trợ người bệnh|Soạn văn bản vận động hỗ trợ người bệnh có hoàn cảnh khó khăn [mã hồ sơ], minh bạch nguồn tiếp nhận.
+Báo cáo y tế năm|Tổng hợp báo cáo năm [năm] lĩnh vực y tế, dân số, bảo trợ xã hội.
+`]);
+D.push(["GD","Giáo dục mầm non, phổ thông","cq",`
+Chỉ đạo nhiệm vụ năm học|Soạn văn bản UBND chỉ đạo triển khai nhiệm vụ năm học [năm học] đối với các trường trên địa bàn.
+Huy động trẻ ra lớp|Soạn kế hoạch huy động trẻ ra lớp, trẻ 5 tuổi, học sinh vào lớp 1, lớp 6 tại các thôn, bản.
+Phổ cập giáo dục, xóa mù chữ|Lập bảng theo dõi tiêu chí phổ cập giáo dục, xóa mù chữ; chỉ ra tiêu chí có nguy cơ không đạt.
+Học sinh có nguy cơ bỏ học|Phân tích danh sách học sinh có nguy cơ bỏ học (mã hóa), nhóm nguyên nhân và biện pháp vận động.
+Họp ban chỉ đạo giáo dục|Soạn nội dung cuộc họp về giáo dục của địa phương: tình hình, vướng mắc, phân công.
+Nhu cầu cơ sở vật chất trường học|Lập bảng nhu cầu phòng học, công trình vệ sinh, nước sạch của các trường từ báo cáo kèm theo.
+An toàn học sinh bán trú|Soạn kế hoạch bảo đảm an toàn, dinh dưỡng cho học sinh bán trú tại [trường].
+Rà soát chính sách hỗ trợ học sinh|Soạn hướng dẫn rà soát học sinh thuộc diện hưởng chính sách; mức hỗ trợ ghi [cần xác định].
+Xây dựng xã hội học tập|Soạn kế hoạch phối hợp với Hội Khuyến học xây dựng gia đình, dòng họ, cộng đồng học tập.
+An ninh khu vực trường học|Soạn kế hoạch bảo đảm an ninh trật tự, an toàn giao thông khu vực trường học đầu năm học.
+Phòng chống đuối nước học sinh|Soạn nội dung tuyên truyền phòng chống đuối nước cho học sinh dịp hè.
+Phương án sắp xếp điểm trường|Soạn báo cáo hiện trạng các điểm trường lẻ và phương án sắp xếp, so sánh ưu, nhược từng phương án.
+Kiểm tra quản lý giáo dục|Soạn kế hoạch kiểm tra công tác quản lý nhà nước về giáo dục tại các trường theo phân cấp.
+Phát biểu khai giảng|Soạn bài phát biểu của lãnh đạo địa phương tại lễ khai giảng [trường], ngắn, gần gũi với học sinh.
+Lộ trình trường đạt chuẩn|Lập bảng tiêu chí trường đạt chuẩn quốc gia [cấp học], hiện trạng [trường] và lộ trình.
+Giáo dục kỹ năng sống|Soạn nội dung phối hợp nhà trường, gia đình, đoàn thể giáo dục kỹ năng sống cho học sinh.
+Trung tâm học tập cộng đồng|Soạn kế hoạch hoạt động Trung tâm học tập cộng đồng năm [năm]: chuyên đề, đối tượng, thời gian.
+Thông báo tuyển sinh đầu cấp|Soạn thông báo tuyển sinh đầu cấp cho người dân: hồ sơ, thời gian, địa bàn theo kế hoạch của trường.
+Phân luồng sau THCS|Soạn nội dung tuyên truyền phân luồng học sinh sau trung học cơ sở, giới thiệu học nghề.
+Báo cáo giáo dục năm học|Tổng hợp báo cáo giáo dục năm học [năm học]: quy mô, chất lượng, cơ sở vật chất, kiến nghị.
+Tăng cường tiếng Việt cho trẻ|Soạn kế hoạch tăng cường tiếng Việt cho trẻ mầm non người dân tộc thiểu số.
+Giáo dục hòa nhập|Soạn kế hoạch hỗ trợ giáo dục hòa nhập cho học sinh khuyết tật trên địa bàn.
+Xử lý bạo lực học đường|Soạn quy trình phối hợp xử lý khi phát hiện bạo lực học đường, bảo vệ thông tin học sinh.
+Thư gửi phụ huynh|Soạn thư gửi phụ huynh về [nội dung], lời văn thân thiện, dễ hiểu.
+Kiểm tra thống kê giáo dục|Kiểm tra bảng thống kê giáo dục từ các trường, chỉ ra số liệu lệch và lập bảng tổng hợp.
+`]);
+D.push(["VH","Văn hóa, thể thao, du lịch, thông tin cơ sở","cq",`
+Phong trào đời sống văn hóa|Soạn kế hoạch phong trào "Toàn dân đoàn kết xây dựng đời sống văn hóa" năm [năm].
+Bình xét gia đình, thôn văn hóa|Soạn hướng dẫn bình xét danh hiệu gia đình văn hóa, thôn văn hóa; căn cứ ghi [CĂN CỨ PHÁP LÝ].
+Tổ chức lễ hội truyền thống|Soạn kế hoạch tổ chức lễ hội [tên]: phần lễ, phần hội, an ninh, vệ sinh, kinh phí.
+Bảo tồn văn hóa dân tộc|Soạn kế hoạch bảo tồn [nghề/lễ hội/trang phục] của đồng bào [dân tộc] tại địa phương.
+Bảo vệ di tích|Soạn kế hoạch quản lý, bảo vệ di tích [tên]: hiện trạng, nguy cơ, phân công.
+Điều lệ hội thi|Soạn điều lệ hội thi [tên]: đối tượng, nội dung, cách chấm, giải thưởng.
+Du lịch cộng đồng|Soạn đề cương đề án phát triển du lịch cộng đồng tại [thôn, bản]: tiềm năng, sản phẩm, vai trò người dân.
+Giới thiệu điểm du lịch|Viết bài giới thiệu điểm du lịch [tên] từ thông tin kèm theo, không thêm chi tiết không có nguồn.
+Biển hiệu, quảng cáo|Soạn thông báo hướng dẫn hộ kinh doanh treo biển hiệu, quảng cáo đúng quy định.
+Kiểm tra dịch vụ văn hóa|Soạn kế hoạch kiểm tra hoạt động kinh doanh dịch vụ văn hóa trên địa bàn theo phân cấp.
+Lịch phát thanh cơ sở|Soạn lịch phát sóng tuần của đài truyền thanh cơ sở và nội dung từng chương trình.
+Bản tin thông tin cơ sở|Soạn bản tin tháng: tin chính quyền, gương người tốt, lịch tiêm chủng, cảnh báo.
+Tin bài sự kiện|Viết tin về [sự kiện] cho trang thông tin điện tử: tít, sapo, 300 chữ, chú thích ảnh.
+Thể thao quần chúng|Soạn kế hoạch phát triển phong trào thể thao quần chúng năm [năm] tại các thôn.
+Thiết chế văn hóa thôn|Lập bảng hiện trạng nhà văn hóa, sân thể thao các thôn và nhu cầu sửa chữa.
+Nếp sống văn minh|Soạn nội dung vận động thực hiện nếp sống văn minh trong việc cưới, việc tang, lễ hội.
+Chuyển giao tiến bộ kỹ thuật|Soạn kế hoạch chuyển giao [tiến bộ kỹ thuật] cho người dân phối hợp với [đơn vị].
+Nhãn hiệu sản phẩm đặc sản|Soạn đề cương hồ sơ đề nghị xây dựng nhãn hiệu tập thể cho sản phẩm [tên] của địa phương.
+Vùng lõm sóng, internet|Lập bảng các thôn chưa có sóng di động, internet và nội dung đề xuất gửi doanh nghiệp viễn thông.
+Kiểm tra đo lường tại chợ|Soạn kế hoạch kiểm tra cân đối chứng tại chợ, phối hợp với cơ quan chuyên môn.
+Ngày hội văn hóa các dân tộc|Soạn kịch bản ngày hội văn hóa các dân tộc, kèm hoạt động trải nghiệm.
+Văn hóa đọc|Soạn kế hoạch hưởng ứng Ngày Sách và Văn hóa đọc Việt Nam tại địa phương.
+Báo cáo văn hóa - thông tin năm|Tổng hợp báo cáo năm [năm] lĩnh vực văn hóa, thể thao, du lịch, thông tin.
+Kịch bản chương trình văn nghệ|Soạn kịch bản chương trình văn nghệ chào mừng [sự kiện], thời lượng [phút].
+Lớp học chữ dân tộc|Soạn kế hoạch mở lớp dạy chữ [dân tộc] cho cán bộ, người dân, phối hợp với nghệ nhân.
+`]);
+D.push(["NS","Tài chính, ngân sách, kế hoạch, đầu tư","cq",`
+Thuyết minh dự toán ngân sách|Soạn thuyết minh dự toán thu, chi ngân sách năm [năm] từ bảng số liệu kèm theo.
+Báo cáo thu, chi ngân sách|Tổng hợp báo cáo thu, chi ngân sách [kỳ]: so dự toán, so cùng kỳ, nguyên nhân chênh lệch.
+Thuyết minh quyết toán|Soạn thuyết minh quyết toán ngân sách năm [năm], giải thích chênh lệch so với dự toán.
+Công khai ngân sách|Soạn biểu và thông báo công khai dự toán/quyết toán ngân sách theo mẫu quy định.
+Danh mục đầu tư công trung hạn|Soạn danh mục dự án đề xuất đầu tư công [giai đoạn], tiêu chí ưu tiên và bảng so sánh.
+Tờ trình chủ trương đầu tư|Soạn tờ trình đề nghị phê duyệt chủ trương đầu tư dự án [tên]: sự cần thiết, quy mô, vốn, tiến độ.
+Theo dõi giải ngân|Lập bảng theo dõi giải ngân từng dự án, chỉ ra dự án chậm, nguyên nhân và đề xuất điều chuyển vốn.
+Hướng dẫn đăng ký hộ kinh doanh|Soạn hướng dẫn hồ sơ đăng ký hộ kinh doanh cho người dân; căn cứ ghi [CĂN CỨ PHÁP LÝ].
+Hỗ trợ hợp tác xã|Soạn kế hoạch hỗ trợ thành lập, củng cố hợp tác xã, tổ hợp tác năm [năm].
+Gặp gỡ doanh nghiệp, hộ kinh doanh|Soạn nội dung hội nghị gặp gỡ doanh nghiệp, hộ kinh doanh: tình hình, khó khăn, đề xuất.
+Kiểm tra số liệu thống kê|Kiểm tra số liệu thống kê [chỉ tiêu] của các thôn, chỉ ra số bất thường và lập bảng tổng hợp.
+Tài sản công sau sắp xếp|Soạn báo cáo kiểm kê tài sản công sau sắp xếp và đề xuất phương án xử lý tài sản dôi dư.
+Trình tự mua sắm tài sản|Lập bảng các bước mua sắm [tài sản] theo hình thức phù hợp với giá trị; căn cứ ghi [CĂN CỨ PHÁP LÝ].
+Tiến độ thu ngân sách|Phân tích tiến độ thu ngân sách, chỉ ra khoản thu đạt thấp và giải pháp chống thất thu.
+Rà soát quy chế chi tiêu nội bộ|Rà soát dự thảo quy chế chi tiêu nội bộ, chỉ ra mức chi cần đối chiếu quy định.
+Kế hoạch tài chính 3 năm|Soạn thuyết minh kế hoạch tài chính - ngân sách 3 năm [giai đoạn].
+Hồ sơ công trình quy mô nhỏ|Lập bảng kiểm hồ sơ báo cáo kinh tế - kỹ thuật công trình [tên] trước khi trình thẩm định.
+Giám sát đầu tư của cộng đồng|Soạn hướng dẫn Ban giám sát đầu tư của cộng đồng giám sát công trình [tên], kèm mẫu biên bản.
+Quyết toán dự án hoàn thành|Lập bảng kiểm hồ sơ quyết toán dự án hoàn thành [tên], hạn nộp, sai sót hay gặp.
+Quỹ tài chính ngoài ngân sách|Soạn báo cáo tình hình huy động, sử dụng các quỹ tài chính ngoài ngân sách tại địa phương.
+Phân bổ vốn chương trình mục tiêu|Lập bảng phân bổ vốn chương trình mục tiêu quốc gia theo nội dung, thôn, đơn vị thực hiện.
+Kinh tế tập thể|Soạn báo cáo tình hình kinh tế tập thể, hợp tác xã trên địa bàn và đề xuất hỗ trợ.
+Tiết kiệm, chống lãng phí|Soạn chương trình thực hành tiết kiệm, chống lãng phí năm [năm] của UBND.
+Danh mục kêu gọi đầu tư|Soạn danh mục dự án kêu gọi đầu tư, mỗi dự án một đoạn giới thiệu từ thông tin kèm theo.
+Báo cáo tài chính - kế hoạch năm|Tổng hợp báo cáo năm [năm] lĩnh vực tài chính, kế hoạch, đầu tư, thống kê.
+`]);
+D.push(["QH","Xây dựng, quy hoạch, giao thông, công thương","cq",`
+Hướng dẫn cấp phép xây dựng|Soạn hướng dẫn hồ sơ cấp giấy phép xây dựng nhà ở riêng lẻ thuộc thẩm quyền; căn cứ ghi [CĂN CỨ PHÁP LÝ].
+Kiểm tra trật tự xây dựng|Soạn kế hoạch kiểm tra trật tự xây dựng quý [quý], phân công theo khu vực.
+Rà soát biên bản vi phạm xây dựng|Rà soát biên bản kiểm tra công trình vi phạm [mã]: thông tin còn thiếu, bước xử lý tiếp theo.
+Lấy ý kiến về quy hoạch|Soạn nội dung lấy ý kiến người dân về đồ án quy hoạch [tên]: hình thức, thời gian, câu hỏi.
+Giám sát chất lượng công trình|Lập bảng kiểm giám sát chất lượng công trình [tên] theo các giai đoạn thi công chính.
+Biên bản nghiệm thu|Soạn biên bản nghiệm thu hoàn thành hạng mục [tên] từ dữ liệu kèm theo, đủ thành phần.
+Duy tu đường giao thông nông thôn|Soạn kế hoạch duy tu, bảo dưỡng đường giao thông nông thôn năm [năm], phân công các thôn.
+Vận động làm đường|Soạn phương án vận động nhân dân góp công, hiến đất làm đường [tên], công khai đóng góp.
+An toàn giao thông dịp cao điểm|Soạn kế hoạch bảo đảm an toàn giao thông dịp [lễ/Tết], nêu điểm nguy hiểm cần xử lý.
+Lấn chiếm hành lang giao thông|Soạn thông báo yêu cầu tháo dỡ công trình lấn chiếm hành lang an toàn giao thông, thời hạn tự giác.
+Chiếu sáng, cây xanh|Soạn kế hoạch quản lý chiếu sáng công cộng và cây xanh trên các tuyến đường.
+Rà soát nhà tạm, dột nát|Lập bảng rà soát hộ có nhà tạm, dột nát và phương án hỗ trợ theo chương trình [tên].
+Nội quy chợ|Soạn nội quy chợ [tên] và kế hoạch sắp xếp hộ kinh doanh trong chợ.
+Kiểm tra hàng giả, kém chất lượng|Soạn kế hoạch phối hợp kiểm tra hàng giả, hàng kém chất lượng dịp cuối năm.
+Tiểu thủ công nghiệp, làng nghề|Soạn báo cáo tình hình sản xuất tiểu thủ công nghiệp, làng nghề và đề xuất hỗ trợ.
+Đưa sản phẩm đi hội chợ|Soạn kế hoạch đưa sản phẩm địa phương tham gia hội chợ [tên]: sản phẩm, đơn vị, gian hàng.
+Cấp nước, thoát nước|Soạn báo cáo hiện trạng cấp nước sinh hoạt, thoát nước tại khu dân cư và kiến nghị.
+Quy chế nghĩa trang nhân dân|Soạn quy chế quản lý nghĩa trang nhân dân: phân khu, đăng ký, vệ sinh.
+Công trình có nguy cơ mất an toàn|Soạn báo cáo nhanh công trình [tên] có nguy cơ mất an toàn và biện pháp cảnh báo tạm thời.
+Đặt tên đường, công trình|Soạn đề án đặt tên đường, công trình công cộng theo danh sách đề xuất kèm theo.
+Vật liệu lấn chiếm lòng đường|Soạn kế hoạch kiểm tra điểm kinh doanh, tập kết vật liệu xây dựng lấn chiếm lòng đường.
+Hộ chưa có điện lưới|Lập bảng thôn, hộ chưa có điện lưới và nội dung kiến nghị với ngành điện.
+An toàn cơ sở xăng dầu, khí|Soạn kế hoạch phối hợp kiểm tra an toàn cơ sở kinh doanh xăng dầu, khí trên địa bàn.
+Bàn giao công trình cho thôn|Soạn biên bản bàn giao công trình [tên] cho thôn quản lý, kèm quy chế sử dụng, bảo trì.
+Báo cáo xây dựng - công thương năm|Tổng hợp báo cáo năm [năm] lĩnh vực xây dựng, giao thông, công thương.
+`]);
+D.push(["DD","Đất đai, tài nguyên, môi trường","cq",`
+Hướng dẫn thủ tục đất đai|Soạn hướng dẫn hồ sơ [thủ tục đất đai] cho người dân; căn cứ ghi [CĂN CỨ PHÁP LÝ].
+Xác minh nguồn gốc sử dụng đất|Lập bảng nội dung cần xác minh khi xác nhận nguồn gốc, thời điểm sử dụng đất [mã thửa].
+Kế hoạch hòa giải tranh chấp đất|Soạn kế hoạch hòa giải tranh chấp đất đai [mô tả, ẩn danh]: hồ sơ, thành phần, biên bản.
+Biên bản hòa giải đất đai|Soạn biên bản hòa giải tranh chấp đất đai từ ghi chép kèm theo, ghi rõ ý kiến các bên.
+Nhu cầu sử dụng đất|Soạn thuyết minh nhu cầu sử dụng đất năm [năm] từ danh mục công trình, dự án kèm theo.
+Thông báo thu hồi đất|Soạn thông báo thu hồi đất và lịch làm việc với hộ dân; mức bồi thường ghi [cần xác định].
+Giải đáp thắc mắc giải phóng mặt bằng|Soạn tài liệu giải đáp thắc mắc thường gặp của người dân trong giải phóng mặt bằng dự án [tên].
+Xử lý vi phạm đất đai|Soạn kế hoạch kiểm tra, xử lý lấn chiếm, sử dụng đất sai mục đích tại [khu vực].
+Thu gom rác thải sinh hoạt|Soạn kế hoạch thu gom, xử lý rác thải sinh hoạt tại các thôn, phân loại rác tại nguồn.
+Phản ánh ô nhiễm|Soạn văn bản xử lý phản ánh ô nhiễm từ cơ sở [loại]: kiểm tra, yêu cầu khắc phục, báo cáo cấp trên.
+Khai thác khoáng sản trái phép|Soạn kế hoạch ngăn chặn khai thác khoáng sản, cát sỏi trái phép tại [khu vực].
+Bảo vệ nguồn nước|Soạn nội dung tuyên truyền bảo vệ nguồn nước, khu vực đầu nguồn, công trình nước sinh hoạt.
+Cập nhật dữ liệu đất đai|Soạn kế hoạch chỉnh lý biến động, cập nhật cơ sở dữ liệu đất đai, phân công đối soát.
+Báo cáo thống kê đất đai|Soạn báo cáo thống kê đất đai năm [năm] từ số liệu kèm theo, giải thích biến động.
+Hưởng ứng ngày môi trường|Soạn kế hoạch hưởng ứng [Ngày Môi trường thế giới/chiến dịch vệ sinh môi trường] tại địa phương.
+Phòng cháy chữa cháy rừng|Soạn phương án phòng cháy, chữa cháy rừng mùa khô năm [năm]: trọng điểm, lực lượng, phân công trực.
+Giao đất, giao rừng|Soạn báo cáo tình hình giao đất, giao rừng cho hộ, cộng đồng và vướng mắc cần tháo gỡ.
+Thích ứng biến đổi khí hậu|Soạn nội dung tuyên truyền thích ứng biến đổi khí hậu cho nông dân vùng cao.
+Nghĩa vụ tài chính về đất|Soạn văn bản hướng dẫn người dân thực hiện nghĩa vụ tài chính về đất; số tiền theo [thông báo của cơ quan thuế].
+Quỹ đất công ích|Lập bảng quản lý quỹ đất công ích: thửa, diện tích, người thuê, thời hạn, tiền thu.
+Đăng ký môi trường|Lập bảng kiểm hồ sơ đăng ký môi trường của cơ sở thuộc thẩm quyền; căn cứ ghi [CĂN CỨ PHÁP LÝ].
+Điểm nguy cơ sạt lở|Soạn báo cáo khảo sát điểm có nguy cơ sạt lở và phương án cảnh báo, di dời.
+Trả lời đơn về đất đai|Soạn văn bản trả lời đơn về đất đai [nội dung ẩn danh], nêu thẩm quyền và hướng giải quyết.
+Công khai thủ tục đất đai|Soạn bảng công khai trình tự, thời hạn giải quyết các thủ tục đất đai.
+Báo cáo đất đai - môi trường năm|Tổng hợp báo cáo năm [năm] lĩnh vực đất đai, tài nguyên, môi trường.
+`]);
+D.push(["NN","Nông nghiệp, nông thôn mới, thiên tai, giảm nghèo","cq",`
+Kế hoạch sản xuất vụ|Soạn kế hoạch sản xuất vụ [vụ]: diện tích, giống, lịch thời vụ, cán bộ phụ trách địa bàn.
+Thông báo phòng trừ sâu bệnh|Soạn thông báo phòng trừ [sâu bệnh] trên [cây trồng] theo khuyến cáo của cơ quan chuyên môn kèm theo.
+Phòng chống dịch bệnh gia súc|Soạn kế hoạch phòng chống [bệnh] trên gia súc: tiêm phòng, tiêu độc, kiểm soát vận chuyển.
+Chống đói, rét cho gia súc|Soạn văn bản chỉ đạo phòng chống đói, rét cho gia súc mùa đông năm [năm].
+Rà soát tiêu chí nông thôn mới|Lập bảng rà soát tiêu chí nông thôn mới: đạt, chưa đạt, việc cần làm, kinh phí dự kiến.
+Hỗ trợ sản phẩm OCOP|Soạn kế hoạch hỗ trợ sản phẩm [tên] tham gia đánh giá OCOP, danh mục hồ sơ cần chuẩn bị.
+Kế hoạch phòng chống thiên tai|Soạn kế hoạch phòng chống thiên tai năm [năm] theo phương châm bốn tại chỗ.
+Ứng phó lũ quét, sạt lở|Soạn phương án ứng phó lũ quét, sạt lở: điểm nguy cơ, sơ tán, lực lượng, hậu cần.
+Tổng hợp thiệt hại thiên tai|Tổng hợp thiệt hại do [thiên tai] từ báo cáo các thôn theo mẫu biểu, kiểm tra số liệu.
+Kế hoạch giảm nghèo|Soạn kế hoạch giảm nghèo bền vững năm [năm]: hộ nghèo theo nguyên nhân, giải pháp từng nhóm.
+Rà soát hộ nghèo, cận nghèo|Soạn kế hoạch rà soát hộ nghèo, cận nghèo cuối năm: quy trình, phân công, công khai kết quả.
+Dự án hỗ trợ sinh kế|Soạn đề xuất dự án hỗ trợ phát triển sản xuất cho nhóm hộ [mô tả], hiệu quả dự kiến.
+Nạo vét kênh mương|Soạn kế hoạch nạo vét, sửa chữa kênh mương trước vụ [vụ], phân công các thôn.
+Chuyển đổi cơ cấu cây trồng|Soạn phương án chuyển đổi cây trồng tại [khu vực], so sánh hiệu quả các phương án.
+Kinh tế hộ, trang trại|Soạn báo cáo tình hình kinh tế hộ, trang trại và đề xuất chính sách hỗ trợ.
+Tập huấn kỹ thuật|Soạn chương trình tập huấn kỹ thuật [cây/con] cho nông dân, dễ hiểu, có thực hành.
+Liên kết sản xuất - tiêu thụ|Soạn khung nội dung thỏa thuận liên kết sản xuất - tiêu thụ [sản phẩm] để các bên đối chiếu.
+An toàn thực phẩm nông sản|Soạn kế hoạch kiểm tra an toàn thực phẩm cơ sở sản xuất nông sản nhỏ lẻ theo phân cấp.
+Hồ sơ mã số vùng trồng|Soạn hướng dẫn hộ, hợp tác xã chuẩn bị hồ sơ đề nghị cấp mã số vùng trồng; căn cứ ghi [CĂN CỨ PHÁP LÝ].
+Ứng phó hạn hán|Soạn phương án ứng phó hạn hán, thiếu nước sinh hoạt và sản xuất mùa khô.
+Kịch bản diễn tập thiên tai|Soạn kịch bản diễn tập ứng phó [tình huống thiên tai] cấp xã.
+Khu dân cư nông thôn mới kiểu mẫu|Soạn kế hoạch xây dựng thôn [tên] đạt chuẩn khu dân cư nông thôn mới kiểu mẫu.
+Bản tin giá nông sản|Soạn bản tin giá cả, thị trường nông sản tuần từ số liệu kèm theo để phát trên loa.
+Dịch vụ môi trường rừng|Soạn báo cáo tình hình chi trả dịch vụ môi trường rừng cho cộng đồng, nhóm hộ.
+Báo cáo nông nghiệp năm|Tổng hợp báo cáo năm [năm] lĩnh vực nông nghiệp, nông thôn mới, giảm nghèo, phòng chống thiên tai.
+`]);
+D.push(["QS","Quốc phòng, quân sự, biên giới","cq",`
+Kế hoạch công tác quốc phòng năm|Soạn kế hoạch công tác quốc phòng, quân sự địa phương năm [năm].
+Tuyển quân|Soạn kế hoạch tuyển chọn và gọi công dân nhập ngũ năm [năm]: các bước, hồ sơ, tuyên truyền.
+Đăng ký nghĩa vụ quân sự lần đầu|Soạn thông báo đăng ký nghĩa vụ quân sự lần đầu cho công dân đủ tuổi.
+Lễ giao nhận quân|Soạn kịch bản lễ giao nhận quân và bài phát biểu động viên tân binh.
+Huấn luyện dân quân|Soạn kế hoạch huấn luyện dân quân năm [năm]: nội dung, thời gian, địa điểm, bảo đảm.
+Kiện toàn lực lượng dân quân|Soạn báo cáo tổ chức, biên chế lực lượng dân quân và đề xuất kiện toàn.
+Bồi dưỡng kiến thức quốc phòng|Soạn kế hoạch bồi dưỡng kiến thức quốc phòng và an ninh cho đối tượng 4 tại địa phương.
+Văn kiện diễn tập|Soạn đề cương văn kiện diễn tập chiến đấu trong khu vực phòng thủ cấp xã theo hướng dẫn của cấp trên.
+Thăm gia đình quân nhân|Soạn kế hoạch thăm hỏi gia đình quân nhân đang tại ngũ dịp [Tết/22-12].
+Kỷ niệm 22-12|Soạn kế hoạch kỷ niệm Ngày thành lập Quân đội nhân dân Việt Nam và Ngày hội quốc phòng toàn dân.
+Tìm kiếm cứu nạn|Soạn phương án tìm kiếm cứu nạn khi có [tình huống]: lực lượng, phương tiện, chỉ huy.
+Kế hoạch phòng thủ dân sự|Soạn kế hoạch hoạt động của Ban Chỉ huy phòng thủ dân sự cấp xã năm [năm].
+Quân nhân xuất ngũ|Soạn kế hoạch tiếp nhận, giới thiệu việc làm cho quân nhân hoàn thành nghĩa vụ trở về địa phương.
+Quản lý vũ khí, công cụ hỗ trợ|Soạn quy định nội bộ quản lý vũ khí, công cụ hỗ trợ của dân quân; căn cứ ghi [CĂN CỨ PHÁP LÝ].
+Báo cáo công tác quân sự|Tổng hợp báo cáo công tác quốc phòng, quân sự địa phương [kỳ].
+Phối hợp giữ an ninh trật tự|Soạn quy chế phối hợp giữa Ban Chỉ huy quân sự, Công an xã và các thôn bảo đảm an ninh trật tự.
+Phối hợp quản lý biên giới|Soạn kế hoạch phối hợp với đồn biên phòng tuần tra, quản lý đường biên, mốc giới trên địa bàn.
+Tự quản đường biên, cột mốc|Soạn báo cáo sơ kết mô hình tổ tự quản đường biên, cột mốc ở thôn biên giới.
+Xuất nhập cảnh trái phép|Soạn nội dung tuyên truyền phòng chống xuất nhập cảnh trái phép, mua bán người qua biên giới.
+Giao lưu với bản giáp biên|Soạn kế hoạch giao lưu hữu nghị với bản giáp biên nước bạn, nêu nội dung phải xin ý kiến cấp trên.
+Phong trào bảo vệ an ninh Tổ quốc|Soạn kế hoạch phát động phong trào toàn dân bảo vệ an ninh Tổ quốc năm [năm].
+Trực sẵn sàng của dân quân|Soạn kế hoạch trực sẵn sàng chiến đấu, trực phòng chống thiên tai của dân quân.
+Hồ sơ quân nhân dự bị|Soạn hướng dẫn rà soát, cập nhật hồ sơ quân nhân dự bị và phương tiện kỹ thuật.
+Phối hợp với Đoàn Thanh niên|Soạn chương trình phối hợp giữa Ban Chỉ huy quân sự và Đoàn Thanh niên trong tuyển quân, huấn luyện.
+Rút kinh nghiệm diễn tập|Từ báo cáo diễn tập kèm theo, soạn rút kinh nghiệm: mặt mạnh, hạn chế, việc khắc phục.
+`]);
+
+// Khối MẶT TRẬN TỔ QUỐC VÀ CÁC TỔ CHỨC CHÍNH TRỊ - XÃ HỘI
+D.push(["MT","Công tác Mặt trận Tổ quốc","mt",`
+Chương trình phối hợp thống nhất hành động|Soạn chương trình phối hợp và thống nhất hành động năm [năm] của Ủy ban MTTQ và các tổ chức thành viên.
+Ngày hội Đại đoàn kết|Soạn kế hoạch tổ chức Ngày hội Đại đoàn kết toàn dân tộc ở khu dân cư năm [năm].
+Thực hiện cuộc vận động|Soạn kế hoạch thực hiện cuộc vận động [tên]: nội dung, tiêu chí, cách đánh giá.
+Kế hoạch giám sát của Mặt trận|Soạn kế hoạch giám sát của Ủy ban MTTQ về [nội dung]: đối tượng, nội dung, đoàn giám sát, thời gian.
+Văn bản phản biện xã hội|Soạn văn bản phản biện xã hội đối với dự thảo [văn bản] của chính quyền, có đề xuất cụ thể.
+Ý kiến cử tri gửi kỳ họp|Tổng hợp ý kiến, kiến nghị của cử tri và nhân dân gửi kỳ họp HĐND, phân loại theo lĩnh vực.
+Quỹ Vì người nghèo|Soạn kế hoạch vận động Quỹ "Vì người nghèo" và mẫu báo cáo công khai thu, chi.
+Hỗ trợ nhà ở đại đoàn kết|Soạn kế hoạch hỗ trợ xây nhà đại đoàn kết: tiêu chí, quy trình bình xét, công khai.
+Ban công tác Mặt trận khu dân cư|Soạn hướng dẫn hoạt động của Ban công tác Mặt trận ở thôn, tổ dân phố.
+Ban Thanh tra nhân dân|Soạn kế hoạch hoạt động của Ban Thanh tra nhân dân năm [năm].
+Phối hợp hòa giải cộng đồng|Soạn nội dung Mặt trận phối hợp hòa giải mâu thuẫn trong cộng đồng [mô tả].
+Thăm chức sắc tôn giáo|Soạn kế hoạch thăm, chúc mừng chức sắc, cơ sở tôn giáo dịp [lễ], đúng quy định.
+Hội nghị đại biểu nhân dân|Soạn chương trình hội nghị đại biểu nhân dân cuối năm.
+Tiếp nhận, phân bổ cứu trợ|Soạn quy trình tiếp nhận, phân bổ tiền, hàng cứu trợ thiên tai, công khai minh bạch.
+Nhân dân góp ý cán bộ, đảng viên|Soạn hướng dẫn tổ chức để nhân dân góp ý cán bộ, đảng viên nơi cư trú.
+Đề cương báo cáo đại hội Mặt trận|Lập đề cương báo cáo trình đại hội đại biểu MTTQ cấp xã nhiệm kỳ [nhiệm kỳ].
+Báo cáo công tác Mặt trận|Tổng hợp báo cáo công tác Mặt trận [kỳ] từ báo cáo các tổ chức thành viên.
+Quy chế phối hợp với UBND|Soạn quy chế phối hợp công tác giữa UBND và Ủy ban MTTQ.
+Biểu dương người tiêu biểu|Soạn kế hoạch biểu dương người tiêu biểu trong các dân tộc, tôn giáo, già làng, trưởng bản.
+Thành lập Ban giám sát đầu tư cộng đồng|Soạn quyết định thành lập Ban giám sát đầu tư của cộng đồng đối với công trình [tên].
+Vận động xây dựng nông thôn mới|Soạn kế hoạch Mặt trận vận động nhân dân tham gia xây dựng nông thôn mới, đô thị văn minh.
+Tham gia tiếp công dân|Soạn nội dung đại diện Mặt trận tham gia tiếp công dân định kỳ cùng chính quyền.
+Hiệp thương giới thiệu người ứng cử|Lập bảng các bước hiệp thương giới thiệu người ứng cử theo hướng dẫn hiện hành; căn cứ ghi [CĂN CỨ PHÁP LÝ].
+Phối hợp hoạt động nhân đạo|Soạn kế hoạch phối hợp hoạt động nhân đạo, từ thiện với các tổ chức trên địa bàn.
+Quy chế làm việc Ủy ban MTTQ|Soạn quy chế làm việc của Ủy ban MTTQ cấp xã nhiệm kỳ [nhiệm kỳ].
+`]);
+D.push(["ND","Hội Nông dân","mt",`
+Chương trình công tác năm của Hội|Soạn chương trình công tác năm [năm] của Hội Nông dân: nhiệm vụ, chỉ tiêu, phân công chi hội.
+Nông dân sản xuất, kinh doanh giỏi|Soạn hướng dẫn bình xét hộ nông dân sản xuất, kinh doanh giỏi.
+Quỹ Hỗ trợ nông dân|Soạn quy trình bình xét cho vay vốn Quỹ Hỗ trợ nông dân và theo dõi thu hồi vốn.
+Tổ tiết kiệm và vay vốn|Soạn hướng dẫn tổ tiết kiệm và vay vốn họp bình xét, theo dõi nợ quá hạn.
+Câu lạc bộ nông dân|Soạn điều lệ mẫu câu lạc bộ nông dân [lĩnh vực] để chi hội áp dụng.
+Tập huấn khoa học kỹ thuật|Soạn kế hoạch tập huấn chuyển giao kỹ thuật cho hội viên phối hợp với khuyến nông.
+Phát triển hội viên|Soạn kế hoạch phát triển hội viên, nâng chất lượng sinh hoạt chi hội năm [năm].
+Nông dân tham gia nông thôn mới|Soạn kế hoạch Hội vận động hội viên tham gia xây dựng nông thôn mới.
+Dịch vụ hỗ trợ hội viên|Soạn kế hoạch dịch vụ hỗ trợ vật tư, tiêu thụ nông sản cho hội viên.
+Đối thoại với nông dân|Soạn nội dung hội nghị đối thoại giữa lãnh đạo địa phương và nông dân về [chủ đề].
+Thu gom bao bì thuốc bảo vệ thực vật|Soạn mô hình thu gom bao bì thuốc bảo vệ thực vật trên đồng ruộng.
+Báo cáo công tác Hội Nông dân|Tổng hợp báo cáo công tác Hội Nông dân [kỳ] từ báo cáo các chi hội.
+Bán nông sản trên mạng|Soạn hướng dẫn hội viên bán nông sản trên sàn thương mại điện tử, mạng xã hội.
+Hội thi nhà nông|Soạn điều lệ hội thi nhà nông đua tài cấp xã.
+Tuyên truyền pháp luật cho hội viên|Soạn kế hoạch tuyên truyền pháp luật, giới thiệu trợ giúp pháp lý cho hội viên.
+Sinh hoạt chi hội nông dân|Soạn đề cương sinh hoạt chi hội quý [quý] với chủ đề [chủ đề].
+Mô hình kinh tế tập thể|Soạn báo cáo điển hình mô hình [tên] do Hội hỗ trợ: cách làm, hiệu quả.
+Vận động hội viên đồng bào dân tộc|Soạn nội dung vận động hội viên đồng bào [dân tộc] áp dụng [kỹ thuật/mô hình].
+Kiểm tra chi hội nông dân|Soạn kế hoạch kiểm tra hoạt động chi hội và bảng tiêu chí đánh giá.
+Thi đua của Hội Nông dân|Soạn hướng dẫn bình xét thi đua năm và mẫu báo cáo thành tích chi hội.
+Đề cương báo cáo đại hội Hội|Lập đề cương báo cáo chính trị đại hội Hội Nông dân cấp xã nhiệm kỳ [nhiệm kỳ].
+Kỷ niệm ngày thành lập Hội 14/10|Soạn kế hoạch kỷ niệm ngày thành lập Hội Nông dân Việt Nam 14/10.
+Góp ý chính sách cho nông dân|Soạn ý kiến của Hội Nông dân góp ý dự thảo [chính sách] liên quan đến nông dân.
+Cảnh báo vật tư nông nghiệp giả|Soạn cảnh báo hội viên về giống, phân bón giả và cách nhận biết.
+Giúp hội viên nghèo|Soạn kế hoạch Hội giúp hội viên nghèo về giống, kỹ thuật, ngày công.
+`]);
+D.push(["PN","Hội Liên hiệp Phụ nữ","mt",`
+Chương trình công tác năm của Hội|Soạn chương trình công tác năm [năm] của Hội Liên hiệp Phụ nữ cấp xã.
+Gia đình 5 không 3 sạch|Soạn kế hoạch thực hiện cuộc vận động xây dựng gia đình 5 không 3 sạch tại các chi hội.
+Phụ nữ khởi nghiệp|Soạn kế hoạch hỗ trợ phụ nữ khởi nghiệp, phát triển kinh tế năm [năm].
+Sinh hoạt phòng chống bạo lực gia đình|Soạn nội dung sinh hoạt chuyên đề phòng chống bạo lực gia đình, giới thiệu địa chỉ tin cậy.
+Tảo hôn, hôn nhân cận huyết|Soạn nội dung tuyên truyền phòng chống tảo hôn, hôn nhân cận huyết thống cho đồng bào vùng cao.
+Mua bán phụ nữ, trẻ em|Soạn tài liệu tuyên truyền phòng chống mua bán phụ nữ, trẻ em qua biên giới.
+Tổ phụ nữ tiết kiệm|Soạn quy chế hoạt động tổ phụ nữ tiết kiệm, vay vốn, giúp nhau làm kinh tế.
+Kỷ niệm 8/3, 20/10|Soạn kế hoạch kỷ niệm [8/3 hoặc 20/10]: nội dung, khen thưởng, kinh phí.
+Thu hút hội viên|Soạn kế hoạch thu hút hội viên, nhất là phụ nữ trẻ, phụ nữ dân tộc thiểu số.
+Chăm sóc trẻ em|Soạn kế hoạch Hội tham gia chăm sóc dinh dưỡng trẻ em và Tháng hành động vì trẻ em.
+Nguồn cán bộ nữ|Soạn nội dung giới thiệu nguồn cán bộ nữ và bồi dưỡng kỹ năng lãnh đạo cho cán bộ Hội.
+Báo cáo công tác Hội Phụ nữ|Tổng hợp báo cáo công tác Hội Phụ nữ [kỳ] từ báo cáo các chi hội.
+Địa chỉ tin cậy|Soạn quy trình hoạt động của địa chỉ tin cậy: tiếp nhận, bảo vệ, kết nối hỗ trợ, giữ bí mật.
+Phụ nữ dùng dịch vụ số|Soạn hướng dẫn hội viên sử dụng dịch vụ công trực tuyến, thanh toán không dùng tiền mặt.
+Sinh hoạt chi hội phụ nữ|Soạn đề cương sinh hoạt chi hội phụ nữ tháng [tháng] với chủ đề [chủ đề].
+Đỡ đầu hội viên nghèo|Soạn kế hoạch mỗi chi hội nhận đỡ đầu hội viên nghèo, trẻ em mồ côi.
+Chia sẻ việc nhà|Soạn câu chuyện tuyên truyền ngắn về chia sẻ việc nhà, bình đẳng giới trong gia đình.
+Đề cương báo cáo đại hội phụ nữ|Lập đề cương báo cáo đại hội đại biểu phụ nữ cấp xã nhiệm kỳ [nhiệm kỳ].
+Góp ý chính sách về phụ nữ, trẻ em|Soạn ý kiến của Hội góp ý dự thảo [chính sách] liên quan đến phụ nữ, trẻ em.
+Phụ nữ làm du lịch cộng đồng|Soạn kế hoạch hỗ trợ hội viên làm du lịch cộng đồng, giữ nghề truyền thống.
+Kiểm tra chi hội phụ nữ|Soạn kế hoạch và tiêu chí kiểm tra hoạt động chi hội phụ nữ.
+Giới thiệu mô hình điển hình|Viết bài giới thiệu mô hình [tên] của chi hội từ thông tin kèm theo.
+Thi đua cuối năm của Hội|Soạn hướng dẫn bình xét thi đua cuối năm của Hội và mẫu báo cáo.
+Phụ nữ yếu thế|Soạn kế hoạch hỗ trợ phụ nữ đơn thân, khuyết tật, có hoàn cảnh khó khăn.
+Câu lạc bộ phụ nữ|Soạn kế hoạch thành lập câu lạc bộ [chủ đề] cho hội viên.
+`]);
+D.push(["TN","Đoàn Thanh niên, thiếu nhi","mt",`
+Chương trình công tác Đoàn năm|Soạn chương trình công tác Đoàn và phong trào thanh thiếu nhi năm [năm].
+Chiến dịch tình nguyện hè|Soạn kế hoạch chiến dịch thanh niên tình nguyện hè năm [năm]: công trình, phần việc.
+Phát triển đoàn viên|Soạn kế hoạch phát triển đoàn viên mới và hướng dẫn hồ sơ kết nạp.
+Giới thiệu đoàn viên ưu tú|Soạn hướng dẫn chi đoàn bình xét, giới thiệu đoàn viên ưu tú cho Đảng xem xét kết nạp.
+Tháng Thanh niên|Soạn kế hoạch tổ chức Tháng Thanh niên năm [năm].
+Thanh niên khởi nghiệp|Soạn kế hoạch hỗ trợ thanh niên khởi nghiệp, vay vốn, học nghề.
+Động viên thanh niên nhập ngũ|Soạn kế hoạch Đoàn tham gia tuyên truyền, động viên thanh niên lên đường nhập ngũ.
+Sinh hoạt hè cho thiếu nhi|Soạn kế hoạch sinh hoạt hè cho thiếu nhi ở khu dân cư, chú trọng an toàn, phòng đuối nước.
+Đội hình hỗ trợ dịch vụ công|Soạn kế hoạch đội hình thanh niên hỗ trợ người dân sử dụng dịch vụ công trực tuyến.
+Sinh hoạt chi đoàn|Soạn đề cương sinh hoạt chi đoàn tháng [tháng] với chủ đề [chủ đề].
+Đánh giá đoàn viên cuối năm|Soạn hướng dẫn đánh giá, xếp loại đoàn viên và tổ chức Đoàn cuối năm.
+Phòng chống ma túy trong thanh niên|Soạn nội dung sinh hoạt phòng chống ma túy, tệ nạn xã hội cho thanh thiếu niên.
+Đối thoại với thanh niên|Soạn kế hoạch hội nghị lãnh đạo địa phương đối thoại với thanh niên về [chủ đề].
+Đề cương báo cáo đại hội Đoàn|Lập đề cương báo cáo đại hội Đoàn cấp xã nhiệm kỳ [nhiệm kỳ].
+Câu lạc bộ thanh niên|Soạn kế hoạch thành lập câu lạc bộ [lĩnh vực] cho thanh niên.
+Công trình thanh niên|Soạn đề xuất công trình thanh niên [tên]: mục đích, quy mô, nguồn lực, tiến độ.
+Phong trào Kế hoạch nhỏ|Soạn kế hoạch phong trào Kế hoạch nhỏ trong Đội Thiếu niên phối hợp với nhà trường.
+Báo cáo công tác Đoàn|Tổng hợp báo cáo công tác Đoàn [kỳ] từ báo cáo các chi đoàn.
+Đoàn viên đi làm ăn xa|Soạn phương án quản lý, liên lạc với đoàn viên đi làm ăn xa.
+Kỷ niệm ngày thành lập Đoàn 26/3|Soạn kịch bản lễ kỷ niệm ngày thành lập Đoàn, tuyên dương đoàn viên tiêu biểu.
+Giải thể thao, văn nghệ thanh niên|Soạn điều lệ giải bóng đá hoặc liên hoan văn nghệ thanh niên cấp xã.
+Thanh niên xung kích|Soạn kế hoạch đội thanh niên xung kích tham gia giữ gìn trật tự, an toàn giao thông.
+Diễn đàn trẻ em|Soạn kịch bản diễn đàn trẻ em cấp xã, câu hỏi gợi mở phù hợp lứa tuổi.
+Gương thanh niên tiêu biểu|Viết bài giới thiệu thanh niên tiêu biểu [mã] từ thông tin kèm theo.
+Kiểm tra chi đoàn|Soạn kế hoạch kiểm tra hoạt động chi đoàn và tiêu chí đánh giá.
+`]);
+D.push(["CB","Hội Cựu chiến binh, Công đoàn","mt",`
+Chương trình công tác Hội Cựu chiến binh|Soạn chương trình công tác năm [năm] của Hội Cựu chiến binh cấp xã.
+Giáo dục truyền thống|Soạn kế hoạch cựu chiến binh nói chuyện truyền thống cho học sinh, đoàn viên dịp [ngày lễ].
+Cựu chiến binh làm kinh tế giỏi|Soạn hướng dẫn bình xét cựu chiến binh sản xuất, kinh doanh giỏi và báo cáo điển hình.
+Giúp hội viên khó khăn|Soạn kế hoạch hỗ trợ hội viên cựu chiến binh nghèo, ốm đau, nhà ở xuống cấp.
+Tham gia giữ gìn an ninh|Soạn kế hoạch Hội Cựu chiến binh tham gia giữ gìn an ninh trật tự, hòa giải ở khu dân cư.
+Ngày truyền thống 6/12|Soạn kế hoạch kỷ niệm ngày truyền thống Hội Cựu chiến binh Việt Nam 6/12.
+Báo cáo công tác Hội Cựu chiến binh|Tổng hợp báo cáo công tác Hội Cựu chiến binh [kỳ] từ báo cáo các chi hội.
+Phát triển hội viên cựu chiến binh|Soạn kế hoạch rà soát, kết nạp hội viên là cựu quân nhân, quân nhân xuất ngũ.
+Đề cương báo cáo đại hội Hội|Lập đề cương báo cáo đại hội Hội Cựu chiến binh cấp xã nhiệm kỳ [nhiệm kỳ].
+Rà soát hồ sơ chế độ|Soạn hướng dẫn hội viên rà soát hồ sơ hưởng chế độ; mức hưởng ghi [cần xác định].
+Sinh hoạt chi hội cựu chiến binh|Soạn đề cương sinh hoạt chi hội cựu chiến binh với chủ đề [chủ đề].
+Góp ý của Hội Cựu chiến binh|Soạn ý kiến góp ý của Hội Cựu chiến binh về [dự thảo/vấn đề địa phương].
+Chương trình công đoàn cơ sở|Soạn chương trình hoạt động năm [năm] của công đoàn cơ sở [cơ quan/đơn vị].
+Hội nghị cán bộ, công chức, người lao động|Soạn kế hoạch phối hợp tổ chức hội nghị cán bộ, công chức, người lao động năm [năm].
+Chăm lo đoàn viên|Soạn kế hoạch thăm hỏi đoàn viên ốm đau, khó khăn và tặng quà Tết.
+Phát triển đoàn viên công đoàn|Soạn kế hoạch tuyên truyền phát triển đoàn viên tại doanh nghiệp, hợp tác xã trên địa bàn.
+Đối thoại tại nơi làm việc|Soạn đề cương nội dung đối thoại tại nơi làm việc giữa công đoàn và người sử dụng lao động.
+Tháng Công nhân|Soạn kế hoạch hưởng ứng Tháng Công nhân năm [năm].
+Mái ấm Công đoàn|Soạn tờ trình đề nghị hỗ trợ Mái ấm Công đoàn cho đoàn viên [mã hồ sơ].
+Báo cáo tài chính công đoàn|Soạn báo cáo thu, chi tài chính công đoàn cơ sở [kỳ] từ số liệu kèm theo.
+Thi đua công đoàn|Soạn hướng dẫn bình xét thi đua công đoàn cơ sở cuối năm.
+Kiểm tra công đoàn cơ sở|Soạn kế hoạch kiểm tra tài chính và hoạt động công đoàn cơ sở.
+Văn hóa công sở|Soạn kế hoạch xây dựng văn hóa công sở và phong trào thi đua tại cơ quan.
+Hội thao cán bộ, công chức|Soạn điều lệ hội thao cán bộ, công chức nhân dịp [ngày lễ].
+Báo cáo công tác công đoàn năm|Tổng hợp báo cáo công tác công đoàn năm [năm].
+`]);
+
+
+(function(){
+"use strict";
+/* ---------- Danh mục ---------- */
+var GROUP={chung:{name:"Dùng chung",cls:"g-chung"},dang:{name:"Khối Đảng",cls:"g-dang"},cq:{name:"Khối Chính quyền",cls:"g-cq"},mt:{name:"Mặt trận, đoàn thể",cls:"g-mt"}};
+var GENERAL=["VB","BC","HN","CS"];
+var POS={
+ lanhdao:[
+  {id:"ld_du",k:"dang",org:"dang",label:"Thường trực Đảng ủy (Bí thư, Phó Bí thư)",who:"đồng chí Bí thư hoặc Phó Bí thư Đảng ủy",d:["DU","VD","TC","TG","KT","TD","MT"]},
+  {id:"ld_tm",k:"dang",org:"dang",label:"Lãnh đạo cơ quan tham mưu Đảng ủy (Chánh Văn phòng, Trưởng Ban Xây dựng Đảng, Chủ nhiệm UBKT)",who:"lãnh đạo cơ quan tham mưu, giúp việc Đảng ủy",d:["DU","VD","TC","TG","KT","CT"]},
+  {id:"ld_hd",k:"cq",org:"hdnd",label:"Thường trực HĐND, Trưởng các Ban HĐND",who:"lãnh đạo Thường trực HĐND hoặc Trưởng Ban của HĐND",d:["HD","TD","NS","DH"]},
+  {id:"ld_ub",k:"cq",org:"ubnd",label:"Chủ tịch, Phó Chủ tịch UBND",who:"đồng chí Chủ tịch hoặc Phó Chủ tịch UBND",d:["DH","TD","TP","HC","NV","XH","YT","GD","VH","NS","QH","DD","NN","QS"]},
+  {id:"ld_ph",k:"cq",org:"ubnd",label:"Chánh Văn phòng, Trưởng/Phó phòng, Giám đốc Trung tâm PVHCC, Chỉ huy trưởng BCH Quân sự",who:"lãnh đạo phòng chuyên môn, Trung tâm Phục vụ hành chính công hoặc Ban Chỉ huy quân sự",d:["DH","HD","TP","TD","HC","NV","XH","YT","GD","VH","NS","QH","DD","NN","QS"]},
+  {id:"ld_mt",k:"mt",org:"mttq",label:"Chủ tịch, Phó Chủ tịch UB MTTQ; người đứng đầu các đoàn thể",who:"lãnh đạo Ủy ban MTTQ hoặc người đứng đầu tổ chức chính trị - xã hội",d:["MT","ND","PN","TN","CB","TG","TD"]}
+ ],
+ chuyenvien:[
+  {id:"cv_vpdu",k:"dang",org:"dang",dept:"Văn phòng Đảng ủy",label:"Văn phòng Đảng ủy",d:["VD","DU"]},
+  {id:"cv_xdd",k:"dang",org:"dang",dept:"Ban Xây dựng Đảng",label:"Ban Xây dựng Đảng",d:["TC","TG","DU"]},
+  {id:"cv_ubkt",k:"dang",org:"dang",dept:"Cơ quan Ủy ban Kiểm tra Đảng ủy",label:"Cơ quan Ủy ban Kiểm tra Đảng ủy",d:["KT","TD"]},
+  {id:"cv_ttct",k:"dang",org:"dang",dept:"Trung tâm Chính trị",label:"Trung tâm Chính trị (nơi có)",d:["CT","TG"]},
+  {id:"cv_vp",k:"cq",org:"ubnd",dept:"Văn phòng HĐND và UBND",label:"Văn phòng HĐND và UBND",d:["HD","DH","TP","TD","QS"]},
+  {id:"cv_kt",k:"cq",org:"ubnd",dept:"Phòng Kinh tế",label:"Phòng Kinh tế / Kinh tế, Hạ tầng và Đô thị",d:["NS","QH","DD","NN"]},
+  {id:"cv_vhxh",k:"cq",org:"ubnd",dept:"Phòng Văn hóa - Xã hội",label:"Phòng Văn hóa - Xã hội",d:["NV","XH","YT","GD","VH"]},
+  {id:"cv_hcc",k:"cq",org:"ubnd",dept:"Trung tâm Phục vụ hành chính công",label:"Trung tâm Phục vụ hành chính công",d:["HC","TP","DD"]},
+  {id:"cv_qs",k:"cq",org:"ubnd",dept:"Ban Chỉ huy quân sự",label:"Ban Chỉ huy quân sự",d:["QS","NN"]},
+  {id:"cv_mt",k:"mt",org:"mttq",dept:"Cơ quan Ủy ban MTTQ",label:"Cơ quan Ủy ban MTTQ",d:["MT","TD"]},
+  {id:"cv_dt",k:"mt",org:"doanthe",dept:"",label:"Chuyên trách đoàn thể (Nông dân, Phụ nữ, Đoàn TN, Cựu chiến binh, Công đoàn)",d:["ND","PN","TN","CB","MT"]}
+ ]};
+var THE_THUC={
+ dang:"Văn bản của Đảng trình bày theo thể thức văn bản của Đảng (Hướng dẫn số 36-HD/VPTW ngày 03/4/2018 của Văn phòng Trung ương Đảng, hoặc văn bản thay thế nếu có).",
+ cq:"Văn bản hành chính trình bày theo thể thức tại Nghị định số 30/2020/NĐ-CP về công tác văn thư (hoặc văn bản sửa đổi, thay thế nếu có).",
+ mt:"Văn bản trình bày theo thể thức văn bản của Mặt trận Tổ quốc Việt Nam và tổ chức chính trị - xã hội theo hướng dẫn của cơ quan cấp trên.",
+ chung:"Văn bản trình bày đúng thể thức của hệ thống ban hành (Đảng, chính quyền hoặc Mặt trận, đoàn thể); nếu chưa rõ hệ thống, hỏi lại tôi."};
+var SYS={"cần bổ sung":1,"cần xác định":1,"CĂN CỨ PHÁP LÝ":1};
+var DOCKEY="Dán văn bản chỉ đạo, số liệu, dữ kiện liên quan tại đây";
+var UNITKEY="tên cơ quan, đơn vị";
+var LENKEY="800";
+var AI_LINKS=[["ChatGPT","https://chatgpt.com/"],["Gemini","https://gemini.google.com/"],["Claude","https://claude.ai/new"],["Copilot","https://copilot.microsoft.com/"]];
+
+/* ---------- Tiện ích ---------- */
+function norm(s){return String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/đ/g,"d").replace(/\s+/g," ").trim();}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function hi(s){return esc(s).replace(/\[([^\]]+)\]/g,function(m,k){return (SYS[k]||k===DOCKEY)?'<span class="sys">'+m+'</span>':'<mark>'+m+'</mark>';});}
+function load(k){try{return JSON.parse(localStorage.getItem(k));}catch(e){return null;}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+var $=function(id){return document.getElementById(id);};
+var ICON={
+ star:'<svg class="i" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>',
+ x:'<svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+ copy:'<svg class="i" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>',
+ chev:'<svg class="i chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>',
+ home:'<svg class="i" viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>'
+};
+var NOW=new Date(), Y=NOW.getFullYear(), M=NOW.getMonth()+1, QI=Math.floor((M-1)/3), ROMAN=["I","II","III","IV"];
+
+/* ---------- Dữ liệu ---------- */
+var ITEMS=[],BYID={},DOM={},ORDER=[];
+D.forEach(function(r){
+ DOM[r[0]]={code:r[0],name:r[1],g:r[2]}; ORDER.push(r[0]);
+ r[3].trim().split("\n").forEach(function(line,i){
+  var p=line.split("|"),n=i+1,it={id:r[0]+"-"+(n<10?"0"+n:n),code:r[0],g:r[2],dname:r[1],title:p[0].trim(),desc:p[1].trim()};
+  it.key=norm(it.id+" "+it.title+" "+it.desc+" "+r[1]); ITEMS.push(it); BYID[it.id]=it;
+ });
+});
+
+/* ---------- Hồ sơ người dùng ---------- */
+var P=load("stp2-profile");
+if(!P){P={role:null,pos:null,loai:"xã",ten:"",tinh:"",coquan:"",chucdanh:"",dantoc:"",dodai:"800"};
+ var old=load("stp-pref"); if(old){P.role=old.role||null;P.pos=old.pos||null;if(old.unit)P.coquan=old.unit;}}
+var saved={};(load("stp-saved")||[]).forEach(function(id){saved[id]=1;});
+var drafts=load("stp2-drafts")||{};
+function curPos(p){p=p||P;if(!p.role||!p.pos)return null;return POS[p.role].filter(function(x){return x.id===p.pos;})[0]||null;}
+function placeName(p){p=p||P;return p.ten.trim()?(p.loai+" "+p.ten.trim()):"";}
+function tinhFull(p){p=p||P;var t=p.tinh.trim();if(!t)return"";return /^(tỉnh|thành phố|tp)\b/i.test(t)?t:"tỉnh "+t;}
+function tinhShort(){return P.tinh.trim().replace(/^(tỉnh|thành phố|tp\.?)\s+/i,"");}
+function composeUnit(p){
+ p=p||P;var pos=curPos(p),pl=placeName(p);if(!pl)return"";
+ var org=pos?pos.org:"ubnd",pre={dang:"Đảng ủy",hdnd:"HĐND",ubnd:"UBND",mttq:"Ủy ban MTTQ Việt Nam",doanthe:"Các tổ chức chính trị - xã hội"}[org];
+ var t=tinhFull(p);return pre+" "+pl+(t?", "+t:"");
+}
+function unitName(){return P.coquan.trim()||composeUnit();}
+function deptName(){var pos=curPos();if(!pos||!pos.dept)return"";if(pos.id==="cv_kt"&&P.loai==="phường")return"Phòng Kinh tế, Hạ tầng và Đô thị";return pos.dept;}
+function whoLine(){
+ var pos=curPos();
+ if(P.chucdanh.trim())return P.chucdanh.trim();
+ if(!pos)return P.role==="lanhdao"?"lãnh đạo cấp xã":"cán bộ, công chức cấp xã";
+ if(P.role==="lanhdao")return pos.who;
+ return pos.id==="cv_dt"?"công chức chuyên trách tổ chức chính trị - xã hội":"công chức "+deptName();
+}
+
+/* ---------- Dựng prompt ---------- */
+function rawPrompt(it){
+ var lead=P.role==="lanhdao",pos=curPos(),u=unitName();
+ var tt=THE_THUC[it.g!=="chung"?it.g:(pos?pos.k:"chung")];
+ var reader=lead?"chính tôi (người lãnh đạo) và cấp có thẩm quyền xem xét, quyết định.":"lãnh đạo trực tiếp của tôi và người có thẩm quyền ký ban hành.";
+ var roleRule=lead?"- Khi có nhiều cách làm: nêu 2 - 3 phương án, so sánh ưu điểm, hạn chế, rủi ro; đề xuất phương án kèm lý do.\n- Tách riêng hai phần: việc lãnh đạo cần quyết định; việc giao cho cấp dưới thực hiện."
+  :"- Sản phẩm là dự thảo để trình lãnh đạo, đủ để chỉnh sửa và trình ký.\n- Cuối sản phẩm có 3 dòng tóm tắt để trình: nội dung chính, đề xuất, điểm cần lãnh đạo cho ý kiến.";
+ return ["Bạn là trợ lý tham mưu trong hệ thống chính trị cấp xã (mô hình chính quyền địa phương 2 cấp: tỉnh và xã, phường, đặc khu).",
+ "Người sử dụng: "+whoLine()+", "+(u||"["+UNITKEY+"]")+".","",
+ "1. NHIỆM VỤ ("+it.id+" · "+it.dname+")",it.title+". "+it.desc,"",
+ "2. NGUỒN DỮ LIỆU","Chỉ dùng thông tin tôi dán dưới dòng \"---TÀI LIỆU---\" và tệp tôi đính kèm. Không lấy số liệu, sự kiện, tên người từ nguồn khác.","",
+ "3. TRÌNH TỰ LÀM VIỆC","- Đọc hết tài liệu; ghi nhận ý chính và số liệu liên quan đến nhiệm vụ.","- Đối chiếu với mục 1: phần nào đủ dữ liệu, phần nào còn thiếu.","- Làm sản phẩm theo mục 4, tự kiểm theo mục 6 rồi mới trả kết quả.","",
+ "4. YÊU CẦU TRÌNH BÀY","- Người đọc: "+reader,"- Văn phong hành chính công vụ: câu ngắn, rõ chủ thể, không sáo rỗng, không phô trương.","- "+tt,"- Danh sách, số liệu, phân công, tiến độ trình bày dạng bảng.",roleRule,"- Độ dài: theo yêu cầu ở mục 1; nếu không nêu thì không quá ["+LENKEY+"] chữ.","",
+ "5. NGUYÊN TẮC BẮT BUỘC","- Thiếu dữ liệu thì ghi [cần bổ sung]; không ước lượng, không suy đoán.","- Không tự ghi số hiệu, ngày ban hành, điều, khoản của văn bản pháp luật; chỗ cần căn cứ ghi [CĂN CỨ PHÁP LÝ] để tôi tra cứu và điền.","- Không tự quyết mức phạt, mức chi, mức hỗ trợ, thẩm quyền; ghi [cần xác định].","- Nếu tài liệu còn họ tên, số định danh, địa chỉ, số điện thoại của công dân: nhắc tôi thay bằng mã và không chép lại các thông tin đó.","- Nếu tài liệu có dấu hiệu chứa bí mật nhà nước: dừng xử lý và nhắc tôi.","",
+ "6. TỰ KIỂM TRƯỚC KHI TRẢ KẾT QUẢ","- Có đủ các nội dung nêu ở mục 1.","- Mọi số liệu truy được về tài liệu tôi cung cấp.","- Mọi chỗ [cần bổ sung], [cần xác định] được liệt kê lại ở cuối.","- Cuối kết quả có tối đa 5 điểm tôi phải kiểm tra trước khi sử dụng chính thức.","",
+ "7. DỪNG LẠI HỎI TÔI NẾU","- Tài liệu không đủ để làm quá một nửa yêu cầu ở mục 1.","- Việc có dấu hiệu vượt thẩm quyền cấp xã hoặc cần ý kiến cơ quan cấp tỉnh.","- Số liệu hoặc mốc thời gian quan trọng mâu thuẫn nhau.","",
+ "---TÀI LIỆU---","["+DOCKEY+"]"].join("\n");
+}
+/* Các ô cần điền trong một prompt */
+function fieldsOf(raw){
+ var out=[],seen={},re=/\[([^\]]+)\]/g,m;
+ while((m=re.exec(raw))){var k=m[1];if(SYS[k]||k===DOCKEY||seen[k])continue;seen[k]=1;out.push({key:k,before:raw.slice(Math.max(0,m.index-12),m.index)});}
+ return out;
+}
+function autoValue(key,before){
+ var k=norm(key);
+ if(k==="nam")return""+Y;
+ if(k==="nam hoc")return M>=8?Y+" - "+(Y+1):(Y-1)+" - "+Y;
+ if(k==="thang")return M+"/"+Y;
+ if(k==="quy")return ROMAN[QI]+"/"+Y;
+ if(k==="bo phan")return deptName()||unitName();
+ if(k==="co quan"&&/cua\s*$/.test(norm(before)+" "))return unitName();
+ if(k==="chuc danh")return P.chucdanh.trim();
+ if(k==="dan toc")return P.dantoc.trim();
+ if(k==="ten tinh")return tinhShort();
+ if(key===UNITKEY)return unitName();
+ if(key===LENKEY)return String(P.dodai||"800");
+ return"";
+}
+function chipsFor(key){
+ var k=norm(key),prevM=M===1?"12/"+(Y-1):(M-1)+"/"+Y;
+ if(k==="ky")return["tháng "+M+"/"+Y,"tháng "+prevM,"quý "+ROMAN[QI]+"/"+Y,"6 tháng đầu năm "+Y,"9 tháng năm "+Y,"năm "+Y];
+ if(k==="nam")return[""+(Y-1),""+Y,""+(Y+1)];
+ if(k==="thang")return[M+"/"+Y,prevM];
+ if(k==="quy")return ROMAN.map(function(r){return r+"/"+Y;});
+ if(k==="nam hoc")return[(Y-1)+" - "+Y,Y+" - "+(Y+1)];
+ if(k==="nhiem ky")return["2025 - 2030","2026 - 2031"];
+ if(k==="ngay le"||k==="dip"||k==="ngay le/su kien")return["Tết Nguyên đán","30/4 - 1/5","Quốc khánh 2/9","Ngày thành lập Đảng 3/2"];
+ if(k==="dan toc"&&P.dantoc.trim())return P.dantoc.split(/[,;]/).map(function(s){return s.trim();}).filter(Boolean);
+ if(key===LENKEY)return["300","500","800","1200","2000"];
+ if(/ hoặc /.test(key))return key.split(/ hoặc /).map(function(s){return s.trim();});
+ if(key.indexOf("/")>0&&!/^\d/.test(key)&&key.indexOf("...")<0)return key.split("/").map(function(s){return s.trim();}).filter(Boolean);
+ return[];
+}
+function labelOf(key){
+ if(key===LENKEY)return"Độ dài tối đa (số chữ)";
+ if(key===UNITKEY)return"Tên cơ quan, đơn vị";
+ var s=key.indexOf("/")>0&&!/^\d/.test(key)?"Chọn: "+key.split("/").join(" / "):key;
+ return s.charAt(0).toUpperCase()+s.slice(1);
+}
+function finalPrompt(it,vals,doc){
+ var raw=rawPrompt(it);
+ var out=raw.replace(/\[([^\]]+)\]/g,function(m,k){
+  if(k===DOCKEY)return doc&&doc.trim()?doc.trim():m;
+  if(SYS[k])return m;
+  var v=vals[k];return v&&String(v).trim()?String(v).trim():m;
+ });
+ return out;
+}
+
+/* ---------- Trạng thái giao diện ---------- */
+var V={view:"home",dom:null,q:"",limit:40};
+var C=null; // khung soạn đang mở: {id, vals, edited, doc}
+
+/* ---------- Thanh bên ---------- */
+function myDomains(){var pos=curPos();return pos?GENERAL.concat(pos.d):null;}
+function navItem(code,current){var d=DOM[code];return '<button type="button" class="navi" data-dom="'+code+'" aria-current="'+(current===code)+'"><span class="sw '+GROUP[d.g].cls+'"></span><span>'+esc(d.name)+'</span><span class="c">'+code+'</span></button>';}
+function renderSide(){
+ var pos=curPos(),u=unitName(),mine=myDomains(),cur=V.view==="domain"?V.dom:null,h="";
+ h+='<div class="pcard"><div class="lab">Hồ sơ đơn vị</div>';
+ if(pos||u){h+='<div class="unit">'+esc(u||"Chưa nhập tên đơn vị")+'</div><div class="pos">'+(P.role==="lanhdao"?"Lãnh đạo":"Chuyên viên")+(pos?" · "+esc(pos.label):"")+'</div>';}
+ else h+='<div class="unit">Chưa thiết lập</div><div class="pos">Thiết lập 1 lần để prompt tự điền tên đơn vị, bộ phận, thời gian.</div>';
+ h+='<div class="act"><button type="button" class="btn sm '+(pos?"":"pri")+'" data-act="profile">'+(pos?"Sửa hồ sơ":"Thiết lập ngay")+'</button></div></div>';
+ h+='<nav class="nav" aria-label="Điều hướng">';
+ h+='<button type="button" class="navi" data-act="home" aria-current="'+(V.view==="home")+'">'+ICON.home+'<span>'+(pos?"Lĩnh vực của tôi":"Trang chủ")+'</span></button>';
+ h+='<button type="button" class="navi" data-act="saved" aria-current="'+(V.view==="saved")+'">'+ICON.star+'<span>Prompt đã lưu</span><span class="c">'+Object.keys(saved).length+'</span></button>';
+ if(mine){
+  h+='<div class="navh">Lĩnh vực của tôi</div>';
+  mine.forEach(function(c){h+=navItem(c,cur);});
+  var others=ORDER.filter(function(c){return mine.indexOf(c)<0;});
+  var openOther=cur&&others.indexOf(cur)>=0;
+  h+='<details'+(openOther?" open":"")+'><summary class="navh">'+ICON.chev+'Lĩnh vực khác ('+others.length+')</summary>';
+  others.forEach(function(c){h+=navItem(c,cur);});h+='</details>';
+ }else{
+  ["chung","dang","cq","mt"].forEach(function(g){h+='<div class="navh"><span class="sw '+GROUP[g].cls+'"></span>'+GROUP[g].name+'</div>';ORDER.forEach(function(c){if(DOM[c].g===g)h+=navItem(c,cur);});});
+ }
+ h+='</nav>';
+ $("side").innerHTML=h;
+}
+
+/* ---------- Vùng nội dung ---------- */
+function tile(code){var d=DOM[code];return '<button type="button" class="tile" data-dom="'+code+'"><span class="ic '+GROUP[d.g].cls+'">'+code+'</span><b>'+esc(d.name)+'</b><span class="c">25</span></button>';}
+function rowHTML(it,outTag){
+ return '<article class="row"><button type="button" class="open" data-open="'+it.id+'"><span class="code"><span class="sw '+GROUP[it.g].cls+'"></span>'+it.id+(outTag?' <span class="tag out">Ngoài vị trí</span>':'')+'</span><span><span class="t">'+esc(it.title)+'</span><span class="d">'+hi(it.desc)+'</span></span><span class="go">Mở '+ICON.chev+'</span></button>'+
+ '<button type="button" class="star" data-star="'+it.id+'" aria-pressed="'+(!!saved[it.id])+'" aria-label="Lưu '+it.id+'">'+ICON.star+'</button></article>';
+}
+function listHTML(list,mine){
+ if(!list.length)return'<div class="empty">Không có prompt phù hợp. Thử từ khóa ngắn hơn hoặc gõ không dấu, ví dụ: "ho tich", "dang vien", "thien tai".</div>';
+ var h='<div class="list">'+list.slice(0,V.limit).map(function(it){return rowHTML(it,mine&&mine.indexOf(it.code)<0);}).join("")+'</div>';
+ if(list.length>V.limit)h+='<div class="more"><button type="button" class="btn" data-act="more">Hiện thêm ('+(list.length-V.limit)+' prompt)</button></div>';
+ return h;
+}
+function basisHTML(){
+ return '<details class="basis"><summary>Cơ sở xây dựng danh mục vị trí và lĩnh vực</summary><ol>'+
+ '<li><b>Chính quyền:</b> Nghị định số 150/2025/NĐ-CP (sửa đổi, bổ sung bởi Nghị định số 370/2025/NĐ-CP): cơ quan chuyên môn thuộc UBND cấp xã gồm Văn phòng HĐND và UBND; Phòng Kinh tế (xã, đặc khu) hoặc Phòng Kinh tế, Hạ tầng và Đô thị (phường); Phòng Văn hóa - Xã hội; cùng Trung tâm Phục vụ hành chính công. UBND cấp tỉnh quyết định khung số lượng, tên gọi phòng nên một số địa phương có thể có thêm phòng.</li>'+
+ '<li><b>Vị trí việc làm công chức cấp xã:</b> Nghị định số 361/2025/NĐ-CP, Phụ lục V (42 vị trí: 8 lãnh đạo, quản lý; 34 chuyên môn, nghiệp vụ). Chức danh cán bộ do bầu cử, phê chuẩn không thuộc danh mục này nên được xếp vào nhóm Lãnh đạo.</li>'+
+ '<li><b>Khối Đảng:</b> Hướng dẫn số 31-HD/BTCTW ngày 23/4/2025: Đảng ủy xã, phường lập Văn phòng, Ban Xây dựng Đảng, Cơ quan Ủy ban Kiểm tra; nơi có trụ sở trung tâm chính trị cấp huyện trước đây lập thêm Trung tâm Chính trị.</li>'+
+ '<li><b>Mặt trận, đoàn thể:</b> các Quyết định số 4250, 4251, 4252, 4254, 4260 và 4262-QĐ/BTCTW về danh mục vị trí việc làm công chức Cơ quan Ủy ban MTTQ Việt Nam, Công đoàn, Hội Nông dân, Hội Liên hiệp Phụ nữ, Hội Cựu chiến binh, Đoàn TNCS Hồ Chí Minh.</li></ol>'+
+ '<p>Danh mục được gom theo cơ quan, tổ chức để tra cứu nhanh; không thay thế đề án vị trí việc làm do cấp có thẩm quyền phê duyệt. Trước khi trích dẫn chính thức, đề nghị đối chiếu văn bản gốc còn hiệu lực.</p></details>'+
+ '<p class="foot">Sổ tay 750 prompt AI · TS. Hoàng Thanh Nghị, Phó Hiệu trưởng Trường Cao đẳng Điện Biên biên soạn. Tài liệu tham khảo, phi thương mại. Hồ sơ đơn vị, prompt đã lưu và nội dung đã điền chỉ lưu trên trình duyệt của bạn; tài liệu dán vào không được lưu lại.</p>';
+}
+function renderMain(){
+ var pos=curPos(),mine=myDomains(),h="";
+ var q=V.q.trim();
+ if(q){
+  var qs=norm(q).split(" ");
+  var res=ITEMS.filter(function(it){return qs.every(function(w){return it.key.indexOf(w)>=0;});});
+  if(mine)res.sort(function(a,b){return (mine.indexOf(a.code)<0)-(mine.indexOf(b.code)<0);});
+  h+='<div class="crumbs"><button type="button" data-act="home">Trang chủ</button><span>›</span><span>Tìm kiếm</span></div>';
+  h+='<div class="phead"><div><h1>Kết quả cho “'+esc(q)+'”</h1><p>'+res.length+' prompt'+(mine?'. Prompt thuộc vị trí của bạn được xếp lên trước.':'.')+'</p></div></div>';
+  h+=listHTML(res,mine);
+ }else if(V.view==="domain"&&V.dom){
+  var d=DOM[V.dom],list=ITEMS.filter(function(it){return it.code===V.dom;});
+  h+='<div class="crumbs"><button type="button" data-act="home">'+(pos?"Lĩnh vực của tôi":"Trang chủ")+'</button><span>›</span><span>'+GROUP[d.g].name+'</span></div>';
+  h+='<div class="phead"><div><h1>'+esc(d.name)+'</h1><p>25 prompt · bấm một việc để mở khung soạn, các ô thời gian và đơn vị đã được điền sẵn.</p></div></div>';
+  h+=listHTML(list,null);
+ }else if(V.view==="saved"){
+  var sl=ITEMS.filter(function(it){return saved[it.id];});
+  h+='<div class="crumbs"><button type="button" data-act="home">Trang chủ</button><span>›</span><span>Đã lưu</span></div>';
+  h+='<div class="phead"><div><h1>Prompt đã lưu</h1><p>Bấm biểu tượng ngôi sao ở mỗi prompt để lưu dùng lại.</p></div></div>';
+  h+=sl.length?listHTML(sl,mine):'<div class="empty">Chưa có prompt nào được lưu.</div>';
+ }else{
+  h+='<section class="welcome"><div><h1>'+(pos?"Xin chào, "+esc(whoLine()):"Sổ tay 750 prompt AI cho công vụ cấp xã")+'</h1>'+
+   '<p class="by">Biên soạn: <b>TS. Hoàng Thanh Nghị</b> · Phó Hiệu trưởng Trường Cao đẳng Điện Biên</p>'+
+   '<p class="lead">750 prompt dựng sẵn cho lãnh đạo, công chức Đảng ủy, chính quyền, Mặt trận và đoàn thể xã, phường, đặc khu. Mỗi prompt yêu cầu AI chỉ dùng tài liệu bạn cung cấp, không tự bịa căn cứ pháp lý, đánh dấu chỗ thiếu dữ liệu.</p>'+
+   (pos?'<button type="button" class="btn" data-act="profile">Sửa hồ sơ đơn vị</button>':'<button type="button" class="btn pri" data-act="profile">Thiết lập hồ sơ đơn vị (1 phút)</button>')+
+   '</div><ol class="steps"><li><span class="n">1</span><span><b>Thiết lập hồ sơ</b> một lần: vai trò, vị trí, tên xã/phường. Prompt sẽ tự điền.</span></li><li><span class="n">2</span><span><b>Chọn việc cần làm</b> theo lĩnh vực hoặc gõ vào ô tìm kiếm.</span></li><li><span class="n">3</span><span><b>Điền nốt các ô</b> còn trống, dán tài liệu, bấm <b>Sao chép</b> rồi dán vào công cụ AI.</span></li><li><span class="n">!</span><span>Không dán tài liệu mật; thay họ tên, số định danh của công dân bằng mã. Luôn kiểm tra kết quả AI trước khi dùng.</span></li></ol></section>';
+  if(mine){
+   h+='<div class="sect">Lĩnh vực chuyên môn của bạn</div><div class="tiles">'+pos.d.map(tile).join("")+'</div>';
+   h+='<div class="sect">Dùng chung cho mọi vị trí</div><div class="tiles">'+GENERAL.map(tile).join("")+'</div>';
+   h+='<div class="sect">Lĩnh vực khác</div><div class="tiles">'+ORDER.filter(function(c){return mine.indexOf(c)<0;}).map(tile).join("")+'</div>';
+  }else{
+   ["chung","dang","cq","mt"].forEach(function(g){h+='<div class="sect"><span class="sw '+GROUP[g].cls+'"></span>'+GROUP[g].name+'</div><div class="tiles">'+ORDER.filter(function(c){return DOM[c].g===g;}).map(tile).join("")+'</div>';});
+  }
+ }
+ h+=basisHTML();
+ $("main").innerHTML=h;
+ $("savedN").textContent=Object.keys(saved).length;
+}
+function renderAll(){renderSide();renderMain();}
+function go(view,dom){V.view=view;V.dom=dom||null;V.limit=40;if(V.q){V.q="";$("q").value="";}closeSide();renderAll();window.scrollTo(0,0);}
+
+/* ---------- Khung soạn prompt ---------- */
+function openComposer(id){
+ var it=BYID[id];if(!it)return;
+ var dr=drafts[id]||{};
+ C={id:id,vals:{},edited:{},doc:""};
+ fieldsOf(rawPrompt(it)).forEach(function(f){
+  if(dr[f.key]!=null&&dr[f.key]!==""){C.vals[f.key]=dr[f.key];C.edited[f.key]=1;}
+  else C.vals[f.key]=autoValue(f.key,f.before);
+ });
+ renderComposer();show("composer");
+ setTimeout(function(){var f=$("composer").querySelector("input.input:not(.filled)")||$("cCopy");if(f)f.focus();},60);
+}
+function renderComposer(){
+ var it=BYID[C.id],raw=rawPrompt(it),fs=fieldsOf(raw),g=GROUP[it.g],h="";
+ h+='<div class="chead"><div class="top"><span class="code">'+it.id+'</span><span class="chip '+g.cls+'">'+esc(it.dname)+'</span><button type="button" class="x" data-act="close" aria-label="Đóng">'+ICON.x+'</button></div>';
+ h+='<h2 id="cTitle">'+esc(it.title)+'</h2><p>'+hi(it.desc)+'</p></div>';
+ h+='<div class="cbody">';
+ h+='<div class="blk"><h3><span class="step">1</span>Điền thông tin</h3>';
+ if(!fs.length)h+='<p class="nofld">Prompt này không có ô cần điền.</p>';
+ fs.forEach(function(f,i){
+  var v=C.vals[f.key]||"",auto=!C.edited[f.key]&&v,chips=chipsFor(f.key);
+  h+='<div class="fld"><label for="f'+i+'">'+esc(labelOf(f.key))+(auto?' <span class="auto">Tự điền</span>':'')+'</label>'+
+   '<input class="input'+(v?" filled":"")+'" id="f'+i+'" data-key="'+esc(f.key)+'" value="'+esc(v)+'" placeholder="'+esc(f.key)+'" autocomplete="off">'+
+   (chips.length?'<div class="chips">'+chips.map(function(c){return '<button type="button" data-chip="'+i+'" data-v="'+esc(c)+'">'+esc(c)+'</button>';}).join("")+'</div>':'')+'</div>';
+ });
+ if(!unitName())h+='<p class="note">Mẹo: <button type="button" class="btn sm" data-act="profile">Thiết lập hồ sơ đơn vị</button> để các prompt sau tự điền tên đơn vị, bộ phận.</p>';
+ h+='</div>';
+ h+='<div class="blk"><h3><span class="step">2</span>Tài liệu kèm theo <small style="text-transform:none;letter-spacing:0;font-weight:400">(tùy chọn)</small></h3>'+
+  '<textarea class="textarea" id="fDoc" placeholder="Dán văn bản chỉ đạo, số liệu, ghi chép... vào đây để prompt sao chép ra là dùng được ngay.">'+esc(C.doc)+'</textarea>'+
+  '<p class="note">Nội dung này không được lưu lại. Không dán tài liệu mật; thay họ tên, số định danh, địa chỉ của công dân bằng mã.</p></div>';
+ h+='<div class="blk"><h3><span class="step">3</span>Xem trước prompt</h3><pre class="preview" id="cPrev"></pre></div>';
+ h+='</div>';
+ h+='<div class="cfoot"><div class="r1"><span id="cLeft"></span><span class="sp"></span>'+
+  '<button type="button" class="btn" data-star="'+it.id+'" id="cStar" aria-pressed="'+(!!saved[it.id])+'">'+ICON.star+'<span>'+(saved[it.id]?"Đã lưu":"Lưu")+'</span></button>'+
+  '<button type="button" class="btn pri" id="cCopy" data-act="copy">'+ICON.copy+'<span>Sao chép prompt</span></button></div>'+
+  '<div class="ai">Sau khi sao chép, mở công cụ AI: '+AI_LINKS.map(function(a){return '<a href="'+a[1]+'" target="_blank" rel="noopener">'+a[0]+'</a>';}).join("")+'</div></div>';
+ $("composer").innerHTML=h;updatePreview();
+}
+function updatePreview(){
+ var it=BYID[C.id],txt=finalPrompt(it,C.vals,C.doc);
+ $("cPrev").innerHTML=hi(txt);
+ var left=fieldsOf(rawPrompt(it)).filter(function(f){return !(C.vals[f.key]&&String(C.vals[f.key]).trim());}).length;
+ $("cLeft").innerHTML=left?'<span class="pill w">Còn '+left+' ô chưa điền</span>':'<span class="pill g">Đã điền đủ các ô</span>';
+}
+function persistDraft(){var d={};Object.keys(C.edited).forEach(function(k){if(C.vals[k])d[k]=C.vals[k];});if(Object.keys(d).length)drafts[C.id]=d;else delete drafts[C.id];save("stp2-drafts",drafts);}
+
+/* ---------- Hồ sơ đơn vị (hộp thoại) ---------- */
+var T=null;
+function openProfile(){T=JSON.parse(JSON.stringify(P));T._coquanEdited=!!P.coquan;renderProfile();show("modal");}
+function renderProfile(){
+ var h='<div class="mhead"><h2 id="mTitle">Hồ sơ đơn vị</h2><p>Thiết lập một lần. Thông tin chỉ lưu trên trình duyệt này và được tự điền vào mọi prompt.</p></div><div class="mbody">';
+ h+='<div><span class="lbl">1. Vai trò</span><div class="seg">'+[["lanhdao","Lãnh đạo"],["chuyenvien","Chuyên viên"]].map(function(r){return '<button type="button" data-prole="'+r[0]+'" aria-pressed="'+(T.role===r[0])+'">'+r[1]+'</button>';}).join("")+'</div></div>';
+ h+='<div><span class="lbl">2. Vị trí công tác</span>';
+ if(!T.role)h+='<p class="note">Chọn vai trò để hiện danh sách vị trí.</p>';
+ else["dang","cq","mt"].forEach(function(k){var l=POS[T.role].filter(function(p){return p.k===k;});if(!l.length)return;
+  h+='<div class="posg"><div class="kh k-'+k+'"><span class="sw '+GROUP[k].cls+'"></span>'+GROUP[k].name+'</div><div class="opts">'+l.map(function(p){return '<button type="button" class="opt '+GROUP[k].cls+'" data-ppos="'+p.id+'" aria-pressed="'+(T.pos===p.id)+'">'+esc(p.label)+'</button>';}).join("")+'</div></div>';});
+ h+='</div>';
+ h+='<div><span class="lbl">3. Địa bàn</span><div class="seg" style="margin-bottom:10px">'+["xã","phường","đặc khu"].map(function(l){return '<button type="button" data-ploai="'+l+'" aria-pressed="'+(T.loai===l)+'">'+l.charAt(0).toUpperCase()+l.slice(1)+'</button>';}).join("")+'</div>'+
+  '<div class="grid2"><div><label class="lbl" for="pTen">Tên '+esc(T.loai)+'</label><input class="input" id="pTen" data-pf="ten" value="'+esc(T.ten)+'" placeholder="Nhập tên '+esc(T.loai)+'" autocomplete="off"></div>'+
+  '<div><label class="lbl" for="pTinh">Tỉnh, thành phố</label><input class="input" id="pTinh" data-pf="tinh" value="'+esc(T.tinh)+'" placeholder="VD: tỉnh Điện Biên" autocomplete="off"></div></div></div>';
+ h+='<div><label class="lbl" for="pCq">Tên cơ quan điền vào prompt <small>(tự ghép, sửa nếu cần)</small></label><input class="input" id="pCq" data-pf="coquan" value="'+esc(T._coquanEdited?T.coquan:composeUnit(T))+'" placeholder="Tự ghép khi có tên xã/phường" autocomplete="off"></div>';
+ h+='<div><span class="lbl">4. Tùy chọn thêm</span><div class="grid2">'+
+  '<div><label class="lbl" for="pCd">Chức danh của bạn <small>(không bắt buộc)</small></label><input class="input" id="pCd" data-pf="chucdanh" value="'+esc(T.chucdanh)+'" placeholder="VD: Phó Chủ tịch UBND xã" autocomplete="off"></div>'+
+  '<div><label class="lbl" for="pDt">Dân tộc chủ yếu trên địa bàn</label><input class="input" id="pDt" data-pf="dantoc" value="'+esc(T.dantoc)+'" placeholder="VD: Thái, Mông" autocomplete="off"></div>'+
+  '<div><label class="lbl" for="pLen">Độ dài mặc định (số chữ)</label><input class="input" id="pLen" data-pf="dodai" inputmode="numeric" value="'+esc(T.dodai)+'" autocomplete="off"></div></div></div>';
+ h+='</div><div class="mfoot"><button type="button" class="btn" data-act="mclose">Để sau</button><button type="button" class="btn pri" data-act="msave">Lưu hồ sơ</button></div>';
+ $("modal").innerHTML=h;
+}
+
+/* ---------- Mở/đóng lớp phủ ---------- */
+var lastFocus=null;
+function show(id){lastFocus=document.activeElement;$(id).hidden=false;$("scrim").hidden=false;document.body.style.overflow="hidden";}
+function hideAll(){["composer","modal"].forEach(function(id){$(id).hidden=true;});closeSide();$("scrim").hidden=true;document.body.style.overflow="";C=null;if(lastFocus&&lastFocus.focus)try{lastFocus.focus();}catch(e){}}
+function openSide(){$("side").classList.add("open");$("scrim").hidden=false;}
+function closeSide(){$("side").classList.remove("open");if($("composer").hidden&&$("modal").hidden)$("scrim").hidden=true;}
+
+/* ---------- Sao chép ---------- */
+var toastT;
+function toast(msg){var t=$("toast");t.textContent=msg;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(function(){t.hidden=true;},2600);}
+function copyText(txt,done,fail){
+ function fb(){var ta=document.createElement("textarea");ta.value=txt;ta.setAttribute("readonly","");ta.style.position="fixed";ta.style.opacity="0";ta.style.top="0";ta.style.left="0";document.body.appendChild(ta);ta.select();var ok=false;try{ok=document.execCommand("copy");}catch(e){}document.body.removeChild(ta);ok?done():fail();}
+ try{if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(txt).then(done,fb);else fb();}catch(e){fb();}
+}
+function doCopy(){
+ var it=BYID[C.id],txt=finalPrompt(it,C.vals,C.doc),btn=$("cCopy");
+ copyText(txt,function(){btn.querySelector("span").textContent="Đã sao chép";toast("Đã sao chép prompt "+it.id+". Dán vào công cụ AI để dùng.");setTimeout(function(){if($("cCopy"))$("cCopy").querySelector("span").textContent="Sao chép prompt";},1800);},
+  function(){var pre=$("cPrev"),r=document.createRange();r.selectNodeContents(pre);var s=window.getSelection();s.removeAllRanges();s.addRange(r);pre.scrollIntoView({block:"nearest"});toast("Trình duyệt chặn sao chép tự động. Prompt đã được bôi đen, hãy nhấn Ctrl+C (hoặc giữ để sao chép trên điện thoại).");});
+}
+function toggleStar(id){if(saved[id])delete saved[id];else saved[id]=1;save("stp-saved",Object.keys(saved));
+ document.querySelectorAll('[data-star="'+id+'"]').forEach(function(b){b.setAttribute("aria-pressed",!!saved[id]);var s=b.querySelector("span");if(s)s.textContent=saved[id]?"Đã lưu":"Lưu";});
+ $("savedN").textContent=Object.keys(saved).length;toast(saved[id]?"Đã lưu "+id+" vào danh sách.":"Đã bỏ lưu "+id+".");
+ renderSide();if(V.view==="saved"&&$("composer").hidden)renderMain();}
+
+/* ---------- Sự kiện ---------- */
+document.addEventListener("click",function(e){
+ var b=e.target.closest("button");if(!b)return;var a=b.dataset;
+ if(a.open){openComposer(a.open);return;}
+ if(a.star){toggleStar(a.star);return;}
+ if(a.dom){go("domain",a.dom);return;}
+ if(a.chip!=null){var inp=$("f"+a.chip);inp.value=a.v;inp.dispatchEvent(new Event("input",{bubbles:true}));inp.focus();return;}
+ if(a.prole){T.role=a.prole;T.pos=null;renderProfile();return;}
+ if(a.ppos){T.pos=a.ppos;if(!T._coquanEdited)T.coquan="";renderProfile();return;}
+ if(a.ploai){T.loai=a.ploai;renderProfile();return;}
+ switch(a.act){
+  case"home":go("home");break;
+  case"saved":go("saved");break;
+  case"profile":hideAll();openProfile();break;
+  case"close":case"mclose":save("stp2-seen",1);hideAll();break;
+  case"copy":doCopy();break;
+  case"more":V.limit+=40;renderMain();break;
+  case"msave":
+   var cq=$("pCq").value.trim();T.coquan=(cq&&cq!==composeUnit(T))?cq:"";delete T._coquanEdited;
+   T.dodai=String(parseInt(T.dodai,10)||800);P=T;save("stp2-profile",P);save("stp2-seen",1);hideAll();renderAll();toast("Đã lưu hồ sơ đơn vị. Các prompt sẽ tự điền theo hồ sơ này.");break;
+ }
+});
+$("homeBtn").addEventListener("click",function(){go("home");});
+$("savedBtn").addEventListener("click",function(){go("saved");});
+$("profileBtn").addEventListener("click",function(){openProfile();});
+$("menuBtn").addEventListener("click",openSide);
+$("scrim").addEventListener("click",function(){if(!$("modal").hidden)save("stp2-seen",1);hideAll();});
+document.addEventListener("input",function(e){
+ var t=e.target;
+ if(C&&t.dataset&&t.dataset.key!=null){var k=t.dataset.key;C.vals[k]=t.value;C.edited[k]=1;t.classList.toggle("filled",!!t.value);var lab=t.parentNode.querySelector(".auto");if(lab)lab.remove();persistDraft();updatePreview();return;}
+ if(C&&t.id==="fDoc"){C.doc=t.value;updatePreview();return;}
+ if(T&&t.dataset&&t.dataset.pf){var f=t.dataset.pf;T[f]=t.value;
+  if(f==="coquan"){T._coquanEdited=!!t.value&&t.value!==composeUnit(T);}
+  else if(f==="ten"||f==="tinh"){if(!T._coquanEdited)$("pCq").value=composeUnit(T);}
+ }
+});
+var qt;$("q").addEventListener("input",function(){clearTimeout(qt);var v=this.value;qt=setTimeout(function(){V.q=v;V.limit=40;renderMain();},150);});
+document.addEventListener("keydown",function(e){
+ if(e.key==="Escape"&&(!$("composer").hidden||!$("modal").hidden||$("side").classList.contains("open"))){save("stp2-seen",1);hideAll();}
+ if(e.key==="/"&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();$("q").focus();}
+});
+
+/* ---------- Khởi động ---------- */
+renderAll();
+var hash=(location.hash||"").slice(1).toUpperCase();
+if(BYID[hash])openComposer(hash);
+else if(!load("stp2-seen")&&!curPos())openProfile();
+})();
+
+</script>
+</body>
+</html>
